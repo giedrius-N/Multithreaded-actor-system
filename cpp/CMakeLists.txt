@@ -27,4 +27,5 @@ target_link_libraries(actor_system
     debug;${CAF_DIR}//lib//Debug//caf_io.lib;optimized;${CAF_DIR}//lib//Release//caf_io.lib
     debug;${CAF_DIR}//lib//Debug//caf_net.lib;optimized;${CAF_DIR}//lib//Release//caf_net.lib
     debug;${CAF_DIR}//lib//Debug//caf_openssl.lib;optimized;${CAF_DIR}//lib//Release//caf_openssl.lib
+    ws2_32
 )
