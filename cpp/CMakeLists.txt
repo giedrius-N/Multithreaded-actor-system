@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17.0)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -11,8 +11,12 @@ include_directories(include)
 # CAF - C++ Actor Framework
 set(CAF_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../cpp_actor_framework")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
+set(INCL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-add_executable(actor_system ${SRC_DIR}/main.cpp)
+add_executable(actor_system 
+    ${SRC_DIR}/Main.cpp
+    ${INCL_DIR}/CityTypes.hpp
+)
 
 include_directories(
     "${CAF_DIR}/include"
