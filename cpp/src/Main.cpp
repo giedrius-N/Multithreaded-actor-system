@@ -17,6 +17,7 @@ using namespace std::literals;
 
 struct City
 {
+    int id;
     std::string name;
     int sunnyDays;
     double averageTemp;
@@ -26,6 +27,7 @@ template <class Inspector>
 bool inspect(Inspector& f, City& x)
 {
     return f.object(x).fields(
+        f.field("id", x.id),
         f.field("name", x.name),
         f.field("sunnyDays", x.sunnyDays),
         f.field("averageTemp", x.averageTemp)
@@ -62,7 +64,7 @@ std::vector<City> read_json_file(const std::string& file_path)
     std::cout << "Loaded cities from file: " << file_path << std::endl;
     for (auto& city : cities)
     {
-        std::cout << "- " << city.name << ": " << city.sunnyDays
+        std::cout << city.id << " " << "- " << city.name << ": " << city.sunnyDays
                   << " sunny days, " << city.averageTemp
                   << " average temp" << std::endl;
     }

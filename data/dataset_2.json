@@ -1,127 +1,1502 @@
 [
     {
-      "name": "Vilnius",
-      "sunnyDays": 200,
-      "averageTemp": 17.5
+        "id": 1,
+        "name": "Lisbon",
+        "sunnyDays": 210,
+        "averageTemp": 26
     },
     {
-      "name": "Kaunas",
-      "sunnyDays": 150,
-      "averageTemp": 16.0
+        "id": 2,
+        "name": "Barcelona",
+        "sunnyDays": 220,
+        "averageTemp": 19.5
     },
     {
-      "name": "Klaipeda",
-      "sunnyDays": 160,
-      "averageTemp": 15.5
+        "id": 3,
+        "name": "Athens",
+        "sunnyDays": 250,
+        "averageTemp": 22
     },
     {
-      "name": "London",
-      "sunnyDays": 175,
-      "averageTemp": 14.0
+        "id": 4,
+        "name": "Milan",
+        "sunnyDays": 200,
+        "averageTemp": 27
     },
     {
-      "name": "Riga",
-      "sunnyDays": 175,
-      "averageTemp": 15.0
+        "id": 5,
+        "name": "Valencia",
+        "sunnyDays": 240,
+        "averageTemp": 21.5
     },
     {
-      "name": "Warsaw",
-      "sunnyDays": 180,
-      "averageTemp": 17.5
+        "id": 6,
+        "name": "San Diego",
+        "sunnyDays": 260,
+        "averageTemp": 23
     },
     {
-      "name": "Berlin",
-      "sunnyDays": 150,
-      "averageTemp": 16.0
+        "id": 7,
+        "name": "Nice",
+        "sunnyDays": 230,
+        "averageTemp": 19
     },
     {
-      "name": "Paris",
-      "sunnyDays": 190,
-      "averageTemp": 15.5
+        "id": 8,
+        "name": "Dubai",
+        "sunnyDays": 300,
+        "averageTemp": 28
     },
     {
-      "name": "Kyiv",
-      "sunnyDays": 170,
-      "averageTemp": 14.0
+        "id": 9,
+        "name": "Sofia",
+        "sunnyDays": 270,
+        "averageTemp": 18
     },
     {
-      "name": "Baku",
-      "sunnyDays": 175,
-      "averageTemp": 15.8
+        "id": 10,
+        "name": "Naples",
+        "sunnyDays": 230,
+        "averageTemp": 19.5
     },
     {
-      "name": "Indiana",
-      "sunnyDays": 220,
-      "averageTemp": 10.0
+        "id": 11,
+        "name": "Jerusalem",
+        "sunnyDays": 290,
+        "averageTemp": 24
     },
     {
-      "name": "Chicago",
-      "sunnyDays": 98,
-      "averageTemp": 20.3
+        "id": 12,
+        "name": "Rio de Janeiro",
+        "sunnyDays": 280,
+        "averageTemp": 26
     },
     {
-      "name": "Riga",
-      "sunnyDays": 145,
-      "averageTemp": 18.0
+        "id": 13,
+        "name": "Los Angeles",
+        "sunnyDays": 290,
+        "averageTemp": 24.5
     },
     {
-      "name": "Budapest",
-      "sunnyDays": 160,
-      "averageTemp": 19.8
+        "id": 14,
+        "name": "Montevideo",
+        "sunnyDays": 220,
+        "averageTemp": 20
     },
     {
-      "name": "Tokyo",
-      "sunnyDays": 171,
-      "averageTemp": 17.0
+        "id": 15,
+        "name": "Havana",
+        "sunnyDays": 280,
+        "averageTemp": 27
     },
     {
-      "name": "Cairo",
-      "sunnyDays": 190,
-      "averageTemp": 24.8
+        "id": 16,
+        "name": "Stockholm",
+        "sunnyDays": 260,
+        "averageTemp": 17
     },
     {
-      "name": "Lisbon",
-      "sunnyDays": 210,
-      "averageTemp": 20.0
+        "id": 17,
+        "name": "Copenhagen",
+        "sunnyDays": 240,
+        "averageTemp": 16
     },
     {
-      "name": "Athens",
-      "sunnyDays": 250,
-      "averageTemp": 22.5
+        "id": 18,
+        "name": "Budapest",
+        "sunnyDays": 290,
+        "averageTemp": 19.5
     },
     {
-      "name": "Moscow",
-      "sunnyDays": 120,
-      "averageTemp": 10.5
+        "id": 19,
+        "name": "Pekin",
+        "sunnyDays": 250,
+        "averageTemp": 18
     },
     {
-      "name": "Barcelona",
-      "sunnyDays": 220,
-      "averageTemp": 19.0
+        "id": 20,
+        "name": "Brussels",
+        "sunnyDays": 250,
+        "averageTemp": 16.5
     },
     {
-      "name": "Vienna",
-      "sunnyDays": 175,
-      "averageTemp": 16.5
+        "id": 21,
+        "name": "Zurich",
+        "sunnyDays": 270,
+        "averageTemp": 17
     },
     {
-      "name": "Prague",
-      "sunnyDays": 160,
-      "averageTemp": 17.0
+        "id": 22,
+        "name": "Frankfurt",
+        "sunnyDays": 265,
+        "averageTemp": 18
     },
     {
-      "name": "Helsinki",
-      "sunnyDays": 130,
-      "averageTemp": 9.0
+        "id": 23,
+        "name": "Amsterdam",
+        "sunnyDays": 280,
+        "averageTemp": 17
     },
     {
-      "name": "Amsterdam",
-      "sunnyDays": 165,
-      "averageTemp": 14.5
+        "id": 24,
+        "name": "Dublin",
+        "sunnyDays": 260,
+        "averageTemp": 14.5
     },
     {
-      "name": "Oslo",
-      "sunnyDays": 140,
-      "averageTemp": 8.5
+        "id": 25,
+        "name": "Oslo",
+        "sunnyDays": 240,
+        "averageTemp": 18
+    },
+    {
+        "id": 26,
+        "name": "City_26",
+        "sunnyDays": 226,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 27,
+        "name": "City_27",
+        "sunnyDays": 227,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 28,
+        "name": "City_28",
+        "sunnyDays": 228,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 29,
+        "name": "City_29",
+        "sunnyDays": 229,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 30,
+        "name": "City_30",
+        "sunnyDays": 230,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 31,
+        "name": "City_31",
+        "sunnyDays": 231,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 32,
+        "name": "City_32",
+        "sunnyDays": 232,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 33,
+        "name": "City_33",
+        "sunnyDays": 233,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 34,
+        "name": "City_34",
+        "sunnyDays": 234,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 35,
+        "name": "City_35",
+        "sunnyDays": 235,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 36,
+        "name": "City_36",
+        "sunnyDays": 236,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 37,
+        "name": "City_37",
+        "sunnyDays": 237,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 38,
+        "name": "City_38",
+        "sunnyDays": 238,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 39,
+        "name": "City_39",
+        "sunnyDays": 239,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 40,
+        "name": "City_40",
+        "sunnyDays": 240,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 41,
+        "name": "City_41",
+        "sunnyDays": 241,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 42,
+        "name": "City_42",
+        "sunnyDays": 242,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 43,
+        "name": "City_43",
+        "sunnyDays": 243,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 44,
+        "name": "City_44",
+        "sunnyDays": 244,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 45,
+        "name": "City_45",
+        "sunnyDays": 245,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 46,
+        "name": "City_46",
+        "sunnyDays": 246,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 47,
+        "name": "City_47",
+        "sunnyDays": 247,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 48,
+        "name": "City_48",
+        "sunnyDays": 248,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 49,
+        "name": "City_49",
+        "sunnyDays": 249,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 50,
+        "name": "City_50",
+        "sunnyDays": 250,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 51,
+        "name": "City_51",
+        "sunnyDays": 251,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 52,
+        "name": "City_52",
+        "sunnyDays": 252,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 53,
+        "name": "City_53",
+        "sunnyDays": 253,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 54,
+        "name": "City_54",
+        "sunnyDays": 254,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 55,
+        "name": "City_55",
+        "sunnyDays": 255,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 56,
+        "name": "City_56",
+        "sunnyDays": 256,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 57,
+        "name": "City_57",
+        "sunnyDays": 257,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 58,
+        "name": "City_58",
+        "sunnyDays": 258,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 59,
+        "name": "City_59",
+        "sunnyDays": 259,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 60,
+        "name": "City_60",
+        "sunnyDays": 260,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 61,
+        "name": "City_61",
+        "sunnyDays": 261,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 62,
+        "name": "City_62",
+        "sunnyDays": 262,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 63,
+        "name": "City_63",
+        "sunnyDays": 263,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 64,
+        "name": "City_64",
+        "sunnyDays": 264,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 65,
+        "name": "City_65",
+        "sunnyDays": 265,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 66,
+        "name": "City_66",
+        "sunnyDays": 266,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 67,
+        "name": "City_67",
+        "sunnyDays": 267,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 68,
+        "name": "City_68",
+        "sunnyDays": 268,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 69,
+        "name": "City_69",
+        "sunnyDays": 269,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 70,
+        "name": "City_70",
+        "sunnyDays": 270,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 71,
+        "name": "City_71",
+        "sunnyDays": 271,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 72,
+        "name": "City_72",
+        "sunnyDays": 272,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 73,
+        "name": "City_73",
+        "sunnyDays": 273,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 74,
+        "name": "City_74",
+        "sunnyDays": 274,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 75,
+        "name": "City_75",
+        "sunnyDays": 275,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 76,
+        "name": "City_76",
+        "sunnyDays": 276,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 77,
+        "name": "City_77",
+        "sunnyDays": 277,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 78,
+        "name": "City_78",
+        "sunnyDays": 278,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 79,
+        "name": "City_79",
+        "sunnyDays": 279,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 80,
+        "name": "City_80",
+        "sunnyDays": 280,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 81,
+        "name": "City_81",
+        "sunnyDays": 281,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 82,
+        "name": "City_82",
+        "sunnyDays": 282,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 83,
+        "name": "City_83",
+        "sunnyDays": 283,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 84,
+        "name": "City_84",
+        "sunnyDays": 284,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 85,
+        "name": "City_85",
+        "sunnyDays": 285,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 86,
+        "name": "City_86",
+        "sunnyDays": 286,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 87,
+        "name": "City_87",
+        "sunnyDays": 287,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 88,
+        "name": "City_88",
+        "sunnyDays": 288,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 89,
+        "name": "City_89",
+        "sunnyDays": 289,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 90,
+        "name": "City_90",
+        "sunnyDays": 290,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 91,
+        "name": "City_91",
+        "sunnyDays": 291,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 92,
+        "name": "City_92",
+        "sunnyDays": 292,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 93,
+        "name": "City_93",
+        "sunnyDays": 293,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 94,
+        "name": "City_94",
+        "sunnyDays": 294,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 95,
+        "name": "City_95",
+        "sunnyDays": 295,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 96,
+        "name": "City_96",
+        "sunnyDays": 296,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 97,
+        "name": "City_97",
+        "sunnyDays": 297,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 98,
+        "name": "City_98",
+        "sunnyDays": 298,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 99,
+        "name": "City_99",
+        "sunnyDays": 299,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 100,
+        "name": "City_100",
+        "sunnyDays": 200,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 101,
+        "name": "City_101",
+        "sunnyDays": 201,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 102,
+        "name": "City_102",
+        "sunnyDays": 202,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 103,
+        "name": "City_103",
+        "sunnyDays": 203,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 104,
+        "name": "City_104",
+        "sunnyDays": 204,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 105,
+        "name": "City_105",
+        "sunnyDays": 205,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 106,
+        "name": "City_106",
+        "sunnyDays": 206,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 107,
+        "name": "City_107",
+        "sunnyDays": 207,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 108,
+        "name": "City_108",
+        "sunnyDays": 208,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 109,
+        "name": "City_109",
+        "sunnyDays": 209,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 110,
+        "name": "City_110",
+        "sunnyDays": 210,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 111,
+        "name": "City_111",
+        "sunnyDays": 211,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 112,
+        "name": "City_112",
+        "sunnyDays": 212,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 113,
+        "name": "City_113",
+        "sunnyDays": 213,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 114,
+        "name": "City_114",
+        "sunnyDays": 214,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 115,
+        "name": "City_115",
+        "sunnyDays": 215,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 116,
+        "name": "City_116",
+        "sunnyDays": 216,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 117,
+        "name": "City_117",
+        "sunnyDays": 217,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 118,
+        "name": "City_118",
+        "sunnyDays": 218,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 119,
+        "name": "City_119",
+        "sunnyDays": 219,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 120,
+        "name": "City_120",
+        "sunnyDays": 220,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 121,
+        "name": "City_121",
+        "sunnyDays": 221,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 122,
+        "name": "City_122",
+        "sunnyDays": 222,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 123,
+        "name": "City_123",
+        "sunnyDays": 223,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 124,
+        "name": "City_124",
+        "sunnyDays": 224,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 125,
+        "name": "City_125",
+        "sunnyDays": 225,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 126,
+        "name": "City_126",
+        "sunnyDays": 226,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 127,
+        "name": "City_127",
+        "sunnyDays": 227,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 128,
+        "name": "City_128",
+        "sunnyDays": 228,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 129,
+        "name": "City_129",
+        "sunnyDays": 229,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 130,
+        "name": "City_130",
+        "sunnyDays": 230,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 131,
+        "name": "City_131",
+        "sunnyDays": 231,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 132,
+        "name": "City_132",
+        "sunnyDays": 232,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 133,
+        "name": "City_133",
+        "sunnyDays": 233,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 134,
+        "name": "City_134",
+        "sunnyDays": 234,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 135,
+        "name": "City_135",
+        "sunnyDays": 235,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 136,
+        "name": "City_136",
+        "sunnyDays": 236,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 137,
+        "name": "City_137",
+        "sunnyDays": 237,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 138,
+        "name": "City_138",
+        "sunnyDays": 238,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 139,
+        "name": "City_139",
+        "sunnyDays": 239,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 140,
+        "name": "City_140",
+        "sunnyDays": 240,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 141,
+        "name": "City_141",
+        "sunnyDays": 241,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 142,
+        "name": "City_142",
+        "sunnyDays": 242,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 143,
+        "name": "City_143",
+        "sunnyDays": 243,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 144,
+        "name": "City_144",
+        "sunnyDays": 244,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 145,
+        "name": "City_145",
+        "sunnyDays": 245,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 146,
+        "name": "City_146",
+        "sunnyDays": 246,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 147,
+        "name": "City_147",
+        "sunnyDays": 247,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 148,
+        "name": "City_148",
+        "sunnyDays": 248,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 149,
+        "name": "City_149",
+        "sunnyDays": 249,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 150,
+        "name": "City_150",
+        "sunnyDays": 250,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 151,
+        "name": "City_151",
+        "sunnyDays": 251,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 152,
+        "name": "City_152",
+        "sunnyDays": 252,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 153,
+        "name": "City_153",
+        "sunnyDays": 253,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 154,
+        "name": "City_154",
+        "sunnyDays": 254,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 155,
+        "name": "City_155",
+        "sunnyDays": 255,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 156,
+        "name": "City_156",
+        "sunnyDays": 256,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 157,
+        "name": "City_157",
+        "sunnyDays": 257,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 158,
+        "name": "City_158",
+        "sunnyDays": 258,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 159,
+        "name": "City_159",
+        "sunnyDays": 259,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 160,
+        "name": "City_160",
+        "sunnyDays": 260,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 161,
+        "name": "City_161",
+        "sunnyDays": 261,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 162,
+        "name": "City_162",
+        "sunnyDays": 262,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 163,
+        "name": "City_163",
+        "sunnyDays": 263,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 164,
+        "name": "City_164",
+        "sunnyDays": 264,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 165,
+        "name": "City_165",
+        "sunnyDays": 265,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 166,
+        "name": "City_166",
+        "sunnyDays": 266,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 167,
+        "name": "City_167",
+        "sunnyDays": 267,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 168,
+        "name": "City_168",
+        "sunnyDays": 268,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 169,
+        "name": "City_169",
+        "sunnyDays": 269,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 170,
+        "name": "City_170",
+        "sunnyDays": 270,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 171,
+        "name": "City_171",
+        "sunnyDays": 271,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 172,
+        "name": "City_172",
+        "sunnyDays": 272,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 173,
+        "name": "City_173",
+        "sunnyDays": 273,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 174,
+        "name": "City_174",
+        "sunnyDays": 274,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 175,
+        "name": "City_175",
+        "sunnyDays": 275,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 176,
+        "name": "City_176",
+        "sunnyDays": 276,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 177,
+        "name": "City_177",
+        "sunnyDays": 277,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 178,
+        "name": "City_178",
+        "sunnyDays": 278,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 179,
+        "name": "City_179",
+        "sunnyDays": 279,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 180,
+        "name": "City_180",
+        "sunnyDays": 280,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 181,
+        "name": "City_181",
+        "sunnyDays": 281,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 182,
+        "name": "City_182",
+        "sunnyDays": 282,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 183,
+        "name": "City_183",
+        "sunnyDays": 283,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 184,
+        "name": "City_184",
+        "sunnyDays": 284,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 185,
+        "name": "City_185",
+        "sunnyDays": 285,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 186,
+        "name": "City_186",
+        "sunnyDays": 286,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 187,
+        "name": "City_187",
+        "sunnyDays": 287,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 188,
+        "name": "City_188",
+        "sunnyDays": 288,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 189,
+        "name": "City_189",
+        "sunnyDays": 289,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 190,
+        "name": "City_190",
+        "sunnyDays": 290,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 191,
+        "name": "City_191",
+        "sunnyDays": 291,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 192,
+        "name": "City_192",
+        "sunnyDays": 292,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 193,
+        "name": "City_193",
+        "sunnyDays": 293,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 194,
+        "name": "City_194",
+        "sunnyDays": 294,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 195,
+        "name": "City_195",
+        "sunnyDays": 295,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 196,
+        "name": "City_196",
+        "sunnyDays": 296,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 197,
+        "name": "City_197",
+        "sunnyDays": 297,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 198,
+        "name": "City_198",
+        "sunnyDays": 298,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 199,
+        "name": "City_199",
+        "sunnyDays": 299,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 200,
+        "name": "City_200",
+        "sunnyDays": 200,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 201,
+        "name": "City_201",
+        "sunnyDays": 201,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 202,
+        "name": "City_202",
+        "sunnyDays": 202,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 203,
+        "name": "City_203",
+        "sunnyDays": 203,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 204,
+        "name": "City_204",
+        "sunnyDays": 204,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 205,
+        "name": "City_205",
+        "sunnyDays": 205,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 206,
+        "name": "City_206",
+        "sunnyDays": 206,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 207,
+        "name": "City_207",
+        "sunnyDays": 207,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 208,
+        "name": "City_208",
+        "sunnyDays": 208,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 209,
+        "name": "City_209",
+        "sunnyDays": 209,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 210,
+        "name": "City_210",
+        "sunnyDays": 210,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 211,
+        "name": "City_211",
+        "sunnyDays": 211,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 212,
+        "name": "City_212",
+        "sunnyDays": 212,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 213,
+        "name": "City_213",
+        "sunnyDays": 213,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 214,
+        "name": "City_214",
+        "sunnyDays": 214,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 215,
+        "name": "City_215",
+        "sunnyDays": 215,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 216,
+        "name": "City_216",
+        "sunnyDays": 216,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 217,
+        "name": "City_217",
+        "sunnyDays": 217,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 218,
+        "name": "City_218",
+        "sunnyDays": 218,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 219,
+        "name": "City_219",
+        "sunnyDays": 219,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 220,
+        "name": "City_220",
+        "sunnyDays": 220,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 221,
+        "name": "City_221",
+        "sunnyDays": 221,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 222,
+        "name": "City_222",
+        "sunnyDays": 222,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 223,
+        "name": "City_223",
+        "sunnyDays": 223,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 224,
+        "name": "City_224",
+        "sunnyDays": 224,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 225,
+        "name": "City_225",
+        "sunnyDays": 225,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 226,
+        "name": "City_226",
+        "sunnyDays": 226,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 227,
+        "name": "City_227",
+        "sunnyDays": 227,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 228,
+        "name": "City_228",
+        "sunnyDays": 228,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 229,
+        "name": "City_229",
+        "sunnyDays": 229,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 230,
+        "name": "City_230",
+        "sunnyDays": 230,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 231,
+        "name": "City_231",
+        "sunnyDays": 231,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 232,
+        "name": "City_232",
+        "sunnyDays": 232,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 233,
+        "name": "City_233",
+        "sunnyDays": 233,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 234,
+        "name": "City_234",
+        "sunnyDays": 234,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 235,
+        "name": "City_235",
+        "sunnyDays": 235,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 236,
+        "name": "City_236",
+        "sunnyDays": 236,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 237,
+        "name": "City_237",
+        "sunnyDays": 237,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 238,
+        "name": "City_238",
+        "sunnyDays": 238,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 239,
+        "name": "City_239",
+        "sunnyDays": 239,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 240,
+        "name": "City_240",
+        "sunnyDays": 240,
+        "averageTemp": 15.0
+    },
+    {
+        "id": 241,
+        "name": "City_241",
+        "sunnyDays": 241,
+        "averageTemp": 15.5
+    },
+    {
+        "id": 242,
+        "name": "City_242",
+        "sunnyDays": 242,
+        "averageTemp": 16.0
+    },
+    {
+        "id": 243,
+        "name": "City_243",
+        "sunnyDays": 243,
+        "averageTemp": 16.5
+    },
+    {
+        "id": 244,
+        "name": "City_244",
+        "sunnyDays": 244,
+        "averageTemp": 17.0
+    },
+    {
+        "id": 245,
+        "name": "City_245",
+        "sunnyDays": 245,
+        "averageTemp": 17.5
+    },
+    {
+        "id": 246,
+        "name": "City_246",
+        "sunnyDays": 246,
+        "averageTemp": 18.0
+    },
+    {
+        "id": 247,
+        "name": "City_247",
+        "sunnyDays": 247,
+        "averageTemp": 18.5
+    },
+    {
+        "id": 248,
+        "name": "City_248",
+        "sunnyDays": 248,
+        "averageTemp": 19.0
+    },
+    {
+        "id": 249,
+        "name": "City_249",
+        "sunnyDays": 249,
+        "averageTemp": 19.5
+    },
+    {
+        "id": 250,
+        "name": "City_250",
+        "sunnyDays": 250,
+        "averageTemp": 15.0
     }
-  ]
+]
