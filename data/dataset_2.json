@@ -1,0 +1,127 @@
+[
+    {
+      "name": "Vilnius",
+      "sunnyDays": 200,
+      "averageTemp": 17.5
+    },
+    {
+      "name": "Kaunas",
+      "sunnyDays": 150,
+      "averageTemp": 16.0
+    },
+    {
+      "name": "Klaipeda",
+      "sunnyDays": 160,
+      "averageTemp": 15.5
+    },
+    {
+      "name": "London",
+      "sunnyDays": 175,
+      "averageTemp": 14.0
+    },
+    {
+      "name": "Riga",
+      "sunnyDays": 175,
+      "averageTemp": 15.0
+    },
+    {
+      "name": "Warsaw",
+      "sunnyDays": 180,
+      "averageTemp": 17.5
+    },
+    {
+      "name": "Berlin",
+      "sunnyDays": 150,
+      "averageTemp": 16.0
+    },
+    {
+      "name": "Paris",
+      "sunnyDays": 190,
+      "averageTemp": 15.5
+    },
+    {
+      "name": "Kyiv",
+      "sunnyDays": 170,
+      "averageTemp": 14.0
+    },
+    {
+      "name": "Baku",
+      "sunnyDays": 175,
+      "averageTemp": 15.8
+    },
+    {
+      "name": "Indiana",
+      "sunnyDays": 220,
+      "averageTemp": 10.0
+    },
+    {
+      "name": "Chicago",
+      "sunnyDays": 98,
+      "averageTemp": 20.3
+    },
+    {
+      "name": "Riga",
+      "sunnyDays": 145,
+      "averageTemp": 18.0
+    },
+    {
+      "name": "Budapest",
+      "sunnyDays": 160,
+      "averageTemp": 19.8
+    },
+    {
+      "name": "Tokyo",
+      "sunnyDays": 171,
+      "averageTemp": 17.0
+    },
+    {
+      "name": "Cairo",
+      "sunnyDays": 190,
+      "averageTemp": 24.8
+    },
+    {
+      "name": "Lisbon",
+      "sunnyDays": 210,
+      "averageTemp": 20.0
+    },
+    {
+      "name": "Athens",
+      "sunnyDays": 250,
+      "averageTemp": 22.5
+    },
+    {
+      "name": "Moscow",
+      "sunnyDays": 120,
+      "averageTemp": 10.5
+    },
+    {
+      "name": "Barcelona",
+      "sunnyDays": 220,
+      "averageTemp": 19.0
+    },
+    {
+      "name": "Vienna",
+      "sunnyDays": 175,
+      "averageTemp": 16.5
+    },
+    {
+      "name": "Prague",
+      "sunnyDays": 160,
+      "averageTemp": 17.0
+    },
+    {
+      "name": "Helsinki",
+      "sunnyDays": 130,
+      "averageTemp": 9.0
+    },
+    {
+      "name": "Amsterdam",
+      "sunnyDays": 165,
+      "averageTemp": 14.5
+    },
+    {
+      "name": "Oslo",
+      "sunnyDays": 140,
+      "averageTemp": 8.5
+    }
+  ]

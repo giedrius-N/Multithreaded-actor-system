@@ -1,0 +1,127 @@
+[
+    {
+      "name": "Reykjavik",
+      "sunnyDays": 130,
+      "averageTemp": 7.0
+    },
+    {
+      "name": "Anchorage",
+      "sunnyDays": 150,
+      "averageTemp": 5.0
+    },
+    {
+      "name": "Helsinki",
+      "sunnyDays": 120,
+      "averageTemp": 6.0
+    },
+    {
+      "name": "Edmonton",
+      "sunnyDays": 140,
+      "averageTemp": 3.5
+    },
+    {
+      "name": "Yellowknife",
+      "sunnyDays": 130,
+      "averageTemp": -2.0
+    },
+    {
+      "name": "Fairbanks",
+      "sunnyDays": 120,
+      "averageTemp": -5.0
+    },
+    {
+      "name": "Winnipeg",
+      "sunnyDays": 130,
+      "averageTemp": -4.5
+    },
+    {
+      "name": "Montreal",
+      "sunnyDays": 140,
+      "averageTemp": 1.0
+    },
+    {
+      "name": "St. John's",
+      "sunnyDays": 150,
+      "averageTemp": 4.5
+    },
+    {
+      "name": "Iqaluit",
+      "sunnyDays": 100,
+      "averageTemp": -8.0
+    },
+    {
+      "name": "Dawson City",
+      "sunnyDays": 110,
+      "averageTemp": -7.5
+    },
+    {
+      "name": "Ottawa",
+      "sunnyDays": 160,
+      "averageTemp": -2.0
+    },
+    {
+      "name": "Calgary",
+      "sunnyDays": 150,
+      "averageTemp": 2.0
+    },
+    {
+      "name": "Vancouver",
+      "sunnyDays": 170,
+      "averageTemp": 9.0
+    },
+    {
+      "name": "Quebec City",
+      "sunnyDays": 150,
+      "averageTemp": 0.0
+    },
+    {
+      "name": "Buffalo",
+      "sunnyDays": 160,
+      "averageTemp": 5.0
+    },
+    {
+      "name": "Minneapolis",
+      "sunnyDays": 170,
+      "averageTemp": -1.0
+    },
+    {
+      "name": "Bismarck",
+      "sunnyDays": 150,
+      "averageTemp": -3.0
+    },
+    {
+      "name": "Salem",
+      "sunnyDays": 160,
+      "averageTemp": 8.0
+    },
+    {
+      "name": "Saskatoon",
+      "sunnyDays": 140,
+      "averageTemp": -2.0
+    },
+    {
+      "name": "Regina",
+      "sunnyDays": 130,
+      "averageTemp": -5.0
+    },
+    {
+      "name": "Halifax",
+      "sunnyDays": 140,
+      "averageTemp": 3.0
+    },
+    {
+      "name": "Detroit",
+      "sunnyDays": 170,
+      "averageTemp": 1.5
+    },
+    {
+      "name": "Cleveland",
+      "sunnyDays": 160,
+      "averageTemp": 3.0
+    },
+    {
+      "name": "Syracuse",
+      "sunnyDays": 150,
+      "averageTemp": 0.0
+    }
+  ]

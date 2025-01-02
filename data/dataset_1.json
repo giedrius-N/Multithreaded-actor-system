@@ -1,0 +1,127 @@
+[
+	{
+		"name": "Lisbon",
+		"sunnyDays": 210,
+		"averageTemp": 26
+	},
+	{
+		"name": "Barcelona",
+		"sunnyDays": 220,
+		"averageTemp": 19.5
+	},
+	{
+		"name": "Athens",
+		"sunnyDays": 250,
+		"averageTemp": 22
+	},
+	{
+		"name": "Milan",
+		"sunnyDays": 200,
+		"averageTemp": 27
+	},
+	{
+		"name": "Valencia",
+		"sunnyDays": 240,
+		"averageTemp": 21.5
+	},
+	{
+		"name": "San Diego",
+		"sunnyDays": 260,
+		"averageTemp": 23
+	},
+	{
+		"name": "Nice",
+		"sunnyDays": 230,
+		"averageTemp": 19
+	},
+	{
+		"name": "Dubai",
+		"sunnyDays": 300,
+		"averageTemp": 28
+	},
+	{
+		"name": "Sofia",
+		"sunnyDays": 270,
+		"averageTemp": 18
+	},
+	{
+		"name": "Naples",
+		"sunnyDays": 230,
+		"averageTemp": 19.5
+	},
+	{
+		"name": "Jerusalem",
+		"sunnyDays": 290,
+		"averageTemp": 24
+	},
+	{
+		"name": "Rio de Janeiro",
+		"sunnyDays": 280,
+		"averageTemp": 26
+	},
+	{
+		"name": "Los Angeles",
+		"sunnyDays": 290,
+		"averageTemp": 24.5
+	},
+	{
+		"name": "Montevideo",
+		"sunnyDays": 220,
+		"averageTemp": 20
+	},
+	{
+		"name": "Havana",
+		"sunnyDays": 280,
+		"averageTemp": 27
+	},
+	{
+		"name": "Stockholm",
+		"sunnyDays": 260,
+		"averageTemp": 17
+	},
+	{
+		"name": "Copenhagen",
+		"sunnyDays": 240,
+		"averageTemp": 16
+	},
+	{
+		"name": "Budapest",
+		"sunnyDays": 290,
+		"averageTemp": 19.5
+	},
+	{
+		"name": "Pekin",
+		"sunnyDays": 250,
+		"averageTemp": 18
+	},
+	{
+		"name": "Brussels",
+		"sunnyDays": 250,
+		"averageTemp": 16.5
+	},
+	{
+		"name": "Zurich",
+		"sunnyDays": 270,
+		"averageTemp": 17
+	},
+	{
+		"name": "Frankfurt",
+		"sunnyDays": 265,
+		"averageTemp": 18
+	},
+	{
+		"name": "Amsterdam",
+		"sunnyDays": 280,
+		"averageTemp": 17
+	},
+	{
+		"name": "Dublin",
+		"sunnyDays": 260,
+		"averageTemp": 14.5
+	},
+	{
+		"name": "Oslo",
+		"sunnyDays": 240,
+		"averageTemp": 18
+	}
+]
