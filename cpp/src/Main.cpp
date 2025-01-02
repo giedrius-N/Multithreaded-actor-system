@@ -7,6 +7,8 @@
 #include "caf/typed_actor.hpp"
 #include "caf/all.hpp"
 
+#include "CityTypes.hpp"
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -15,39 +17,21 @@
 using namespace caf;
 using namespace std::literals;
 
-struct City
-{
-    int id;
-    std::string name;
-    int sunnyDays;
-    double averageTemp;
-};
-
-template <class Inspector>
-bool inspect(Inspector& f, City& x)
-{
-    return f.object(x).fields(
-        f.field("id", x.id),
-        f.field("name", x.name),
-        f.field("sunnyDays", x.sunnyDays),
-        f.field("averageTemp", x.averageTemp)
-    );
-}
-
-std::vector<City> read_json_file(const std::string& file_path)
+std::vector<City> read_json_file(const std::string& file_path) 
 {
     std::ifstream file(file_path);
-    if (!file.is_open())
+    if (!file.is_open()) 
     {
         std::cerr << "Could not open file: " << file_path << std::endl;
         return {};
     }
+
     std::stringstream buffer;
     buffer << file.rdbuf();
     std::string file_content = buffer.str();
 
     caf::json_reader reader;
-    if (!reader.load(file_content))
+    if (!reader.load(file_content)) 
     {
         std::cerr << "Could not parse file: " << file_path << std::endl;
         std::cerr << "Error: " << to_string(reader.get_error()) << std::endl;
@@ -55,110 +39,140 @@ std::vector<City> read_json_file(const std::string& file_path)
     }
 
     std::vector<City> cities;
-    if (!reader.apply(cities))
+    if (!reader.apply(cities)) 
     {
         std::cerr << "Could not convert JSON to cities" << std::endl;
         return {};
     }
 
     std::cout << "Loaded cities from file: " << file_path << std::endl;
-    for (auto& city : cities)
+    for (auto& city : cities) 
     {
-        std::cout << city.id << " " << "- " << city.name << ": " << city.sunnyDays
-                  << " sunny days, " << city.averageTemp
-                  << " average temp" << std::endl;
+        std::cout << city.id << " - " << city.name << ": " << city.sunnyDays
+                  << " sunny days, " << city.averageTemp << " average temp" << std::endl;
     }
     return cities;
 }
-
-struct main_actor_trait
+struct sender_actor_trait 
 {
-    using signatures = type_list<
-      
-        result<void>(std::string),
-      
-        result<void>(caf::unit_t)
-    >;
+    using signatures = type_list<result<void>(std::vector<City>)>;
+};
+using sender_actor = typed_actor<sender_actor_trait>;
+
+// Worker actor trait
+struct worker_actor_trait 
+{
+    using signatures = type_list<result<void>(City)>;
+};
+using worker_actor = typed_actor<worker_actor_trait>;
+
+// Sender actor state
+struct sender_actor_state 
+{
+    sender_actor::pointer self;
+
+    explicit sender_actor_state(sender_actor::pointer selfptr) : self(selfptr) {}
+
+    sender_actor::behavior_type make_behavior() 
+    {
+        return 
+        {
+            [this](std::vector<City> cities) 
+            {
+                self->println("Sending data to Python:");
+                for (const auto& city : cities) 
+                {
+                    self->println("- Sending city: {}", city.name);
+                }
+            }
+        };
+    }
 };
 
-using main_actor_t = typed_actor<main_actor_trait>;
-
-struct main_actor_state
+// Worker actor state
+struct worker_actor_state 
 {
-  
-    std::string file_content;
+    worker_actor::pointer self;
 
-    explicit main_actor_state(main_actor_t::pointer selfptr)
-        : self(selfptr)
-    {
-      
-    }
+    explicit worker_actor_state(worker_actor::pointer selfptr) : self(selfptr) {}
 
-    main_actor_t::behavior_type make_behavior()
+    worker_actor::behavior_type make_behavior() 
     {
-        return {
-            [this](const std::string& file_path)
+        return 
+        {
+            [this](City city) 
             {
-                if (load_file(file_path))
+                self->println("Processing city in worker: {}", city.name);
+            }
+        };
+    }
+};
+
+// Main actor trait
+struct main_actor_trait 
+{
+    using signatures = type_list<
+        result<void>(std::string),
+        result<void>(caf::unit_t)>;
+};
+using main_actor = typed_actor<main_actor_trait>;
+
+struct main_actor_state 
+{
+    main_actor::pointer self;
+    sender_actor sender;
+    std::vector<worker_actor> workers;
+    std::vector<City> cities;
+
+    main_actor_state(main_actor::pointer selfptr, sender_actor s, std::vector<worker_actor> w)
+        : self(selfptr), sender(std::move(s)), workers(std::move(w)) {}
+
+    main_actor::behavior_type make_behavior() 
+    {
+        return 
+        {
+            [this](const std::string& file_path) 
+            {
+                cities = read_json_file(file_path);
+                if (!cities.empty()) 
                 {
                     self->println("File loaded successfully: {}", file_path);
-                }
-                else
+                } else 
                 {
                     self->println("Failed to load file: {}", file_path);
                     self->quit();
                 }
             },
-            [this](caf::unit_t)
+            [this](caf::unit_t) 
             {
-                if (!file_content.empty())
+                if (!cities.empty()) 
                 {
-                    self->println("Processing JSON data: {}", file_content);
-                    process_data();
-                }
-                else
+                    self->println("Distributing data to sender and workers...");
+
+                    self->mail(cities).send(sender);
+
+                    for (size_t i = 0; i < cities.size(); ++i) 
+                    {
+                        self->mail(cities[i]).send(workers[i % workers.size()]);
+                    }
+                } else 
                 {
-                    self->println("No JSON data to process.");
+                    self->println("No data to process.");
                 }
             }
         };
     }
-  
-    bool load_file(const std::string& file_path)
-    {
-        std::ifstream file(file_path);
-        if (!file.is_open())
-        {
-            std::cerr << "Failed to open file: " << file_path << '\n';
-            return false;
-        }
-        std::stringstream buffer;
-        buffer << file.rdbuf();
-        file.close();
-
-        file_content = buffer.str();
-        caf::json_reader reader;
-        if (!reader.load(file_content))
-        {
-            std::cerr << "Failed to parse JSON file: " << file_path << '\n';
-            return false;
-        }
-        std::cout << "Successfully loaded JSON file: " << file_path << '\n';
-        return true;
-    }
-
-    void process_data()
-    {
-      
-        std::cout << "Processing file contents: " << file_content << "\n";
-    }
-
-    main_actor_t::pointer self;
 };
 
-void caf_main(actor_system& sys)
+void caf_main(actor_system& sys) 
 {
-    auto main_actor_hdl = sys.spawn(actor_from_state<main_actor_state>);
+    auto sender = sys.spawn(actor_from_state<sender_actor_state>);
+    auto worker1 = sys.spawn(actor_from_state<worker_actor_state>);
+    auto worker2 = sys.spawn(actor_from_state<worker_actor_state>);
+    auto worker3 = sys.spawn(actor_from_state<worker_actor_state>);
+    std::vector<worker_actor> workers = {worker1, worker2, worker3};
+
+    auto main_actor_hdl = sys.spawn(actor_from_state<main_actor_state>, sender, workers);
 
     scoped_actor self{sys};
     std::string file_path = "..\\..\\..\\data\\dataset_1.json";
@@ -167,4 +181,4 @@ void caf_main(actor_system& sys)
     self->send(main_actor_hdl, caf::unit_t{});
 }
 
-CAF_MAIN()
+CAF_MAIN(id_block::custom_types)
