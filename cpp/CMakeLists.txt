@@ -16,6 +16,8 @@ set(INCL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 add_executable(actor_system 
     ${SRC_DIR}/Main.cpp
     ${INCL_DIR}/CityTypes.hpp
+    ${SRC_DIR}/Utils.cpp
+    ${INCL_DIR}/Utils.hpp
 )
 
 include_directories(

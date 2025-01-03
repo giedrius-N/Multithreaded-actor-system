@@ -2,62 +2,20 @@
 #include "caf/actor_system.hpp"
 #include "caf/caf_main.hpp"
 #include "caf/event_based_actor.hpp"
-#include "caf/json_reader.hpp"
 #include "caf/actor_from_state.hpp"
 #include "caf/typed_actor.hpp"
 #include "caf/all.hpp"
 
 #include "CityTypes.hpp"
-
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <vector>
+#include "Utils.hpp"
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#include <thread>  
+#include <thread>
 #include <cstring> 
 
 using namespace caf;
 using namespace std::literals;
-
-std::vector<City> read_json_file(const std::string& file_path)
-{
-    std::ifstream file(file_path);
-    if (!file.is_open())
-    {
-        std::cerr << "Could not open file: " << file_path << std::endl;
-        return {};
-    }
-
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-    std::string file_content = buffer.str();
-
-    caf::json_reader reader;
-    if (!reader.load(file_content))
-    {
-        std::cerr << "Could not parse file: " << file_path << std::endl;
-        std::cerr << "Error: " << to_string(reader.get_error()) << std::endl;
-        return {};
-    }
-
-    std::vector<City> cities;
-    if (!reader.apply(cities))
-    {
-        std::cerr << "Could not convert JSON to cities" << std::endl;
-        return {};
-    }
-
-    std::cout << "Loaded cities from file: " << file_path << std::endl;
-    for (const auto& city : cities)
-    {
-        //std::cout << city.id << " - " << city.name << ": " << city.sunnyDays
-        //          << " sunny days, " << city.averageTemp << " average temp" << std::endl;
-    }
-    return cities;
-}
 
 struct sender_actor_trait
 {
@@ -137,6 +95,8 @@ struct sender_actor_state
 
         self->println("Socket server started, waiting for connections...");
 
+        bool first_connection = true; // Track the first connection
+
         while (true)
         {
             sin_size = sizeof(client_addr);
@@ -157,11 +117,19 @@ struct sender_actor_state
             }
 
             closesocket(new_fd);
+
+            if (first_connection)
+            {
+                // Send a message to the actor to signal the first connection
+                self->send(self, caf::unit_t{});
+                first_connection = false; // Ensure this happens only for the first connection
+            }
         }
 
         closesocket(sockfd);
         WSACleanup();
     }
+
 
     sender_actor::behavior_type make_behavior()
     {
@@ -216,7 +184,7 @@ struct main_actor_state
         return {
             [this](const std::string& file_path)
             {
-                cities = read_json_file(file_path);
+                cities = Utils::ReadJSONFile(file_path);
                 if (!cities.empty())
                 {
                     self->println("File loaded successfully: {}", file_path);
