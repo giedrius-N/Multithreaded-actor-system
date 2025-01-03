@@ -9,6 +9,9 @@
 #include "CityTypes.hpp"
 #include "Utils.hpp"
 #include "Worker.hpp"
+#include "ResultAccumulator.hpp"
+
+#include "AtomConfig.hpp"
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -190,7 +193,7 @@ struct main_actor_state
                         std::vector<City> batch(current, current + worker_batch_size);
                         if (!batch.empty()) 
                         {
-                            self->send(workers[i], batch);
+                            self->mail(send_cities_v, batch).send(workers[i]);
                         }
                         
                         current += worker_batch_size;
@@ -205,12 +208,6 @@ struct main_actor_state
     }
 };
 
-struct results_accumulator_actor_trait
-{
-    using signatures = type_list<result<void>(caf::unit_t)>;
-};
-using results_accumulator_actor = typed_actor<results_accumulator_actor_trait>;
-
 struct getter_actor_trait
 {
     using signatures = type_list<result<void>(caf::unit_t)>;
@@ -222,24 +219,6 @@ struct printer_actor_trait
     using signatures = type_list<result<void>(caf::unit_t)>;
 };
 using printer_actor = typed_actor<printer_actor_trait>;
-
-struct results_accumulator_actor_state
-{
-    results_accumulator_actor::pointer self;
-
-    explicit results_accumulator_actor_state(results_accumulator_actor::pointer selfptr)
-        : self(selfptr) {}
-
-    results_accumulator_actor::behavior_type make_behavior()
-    {
-        return {
-            [this](caf::unit_t)
-            {
-                self->println("I am results_accumulator actor");
-            }
-        };
-    }
-};
 
 struct getter_actor_state
 {
@@ -277,22 +256,24 @@ struct printer_actor_state
 
 void caf_main(actor_system& sys)
 {
+    int workersCnt = 3;
+
+    auto results_accumulator = sys.spawn(actor_from_state<results_accumulator_actor_state>, workersCnt);
+
     auto sender = sys.spawn(actor_from_state<sender_actor_state>);
 
-    int workersCnt = 3;
-    
     std::vector<worker_actor> workers;
     workers.reserve(workersCnt);
     
     for (int i = 0; i < workersCnt; i++)
     {
-        auto worker = sys.spawn(actor_from_state<worker_actor_state>);
+        auto worker = sys.spawn(actor_from_state<worker_actor_state>, results_accumulator);
         workers.push_back(worker);
     }
 
     auto main_actor_hdl = sys.spawn(actor_from_state<main_actor_state>, sender, workers);
 
-    auto results_accumulator = sys.spawn(actor_from_state<results_accumulator_actor_state>);
+    
     auto getter = sys.spawn(actor_from_state<getter_actor_state>);
     auto printer = sys.spawn(actor_from_state<printer_actor_state>);
 
@@ -301,13 +282,10 @@ void caf_main(actor_system& sys)
     self->send(main_actor_hdl, caf::unit_t{});
 
     self->send(results_accumulator, caf::unit_t{});
+
     self->send(getter, caf::unit_t{});
+
     self->send(printer, caf::unit_t{});
-
-
-
-    std::cin.get();
 }
 
-
-CAF_MAIN()
+CAF_MAIN(id_block::system)

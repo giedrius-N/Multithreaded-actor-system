@@ -24,11 +24,4 @@ bool inspect(Inspector& f, City& x)
     );
 }
 
-CAF_BEGIN_TYPE_ID_BLOCK(custom_types, caf::first_custom_type_id)
-
-CAF_ADD_TYPE_ID(custom_types, (City))                  
-CAF_ADD_TYPE_ID(custom_types, (std::vector<City>))     
-
-CAF_END_TYPE_ID_BLOCK(custom_types)
-
 #endif // CITY_TYPES_HPP

@@ -1,13 +1,23 @@
 #include "Worker.hpp"
 #include "caf/actor_ostream.hpp"
+#include "AtomConfig.hpp"
+
+worker_actor_state::worker_actor_state(worker_actor::pointer selfptr, results_accumulator_actor accumulator)
+    : self(selfptr), results_accumulator(std::move(accumulator)) {}
 
 void worker_actor_state::process_cities(std::vector<City>& cities)
 {
     for (const auto& city : cities)
     {
         int comfortIndex = calculate_comfort_index(city);
-        self->println("City: {}, Comfort Index: {}", city.name, comfortIndex);
+
+        if (comfortIndex > 1000)
+        {
+            self->send(results_accumulator, city);
+        }
     }
+
+    self->send(results_accumulator, std::string("done"));
 }
 
 int worker_actor_state::calculate_comfort_index(const City& city)
@@ -51,7 +61,7 @@ worker_actor::behavior_type worker_actor_state::make_behavior()
         {
             self->println("Worker actor triggered with unit_t");
         },
-        [this](std::vector<City> cities)
+        [this](send_cities, std::vector<City> cities)
         {
             process_cities(cities);
         }
