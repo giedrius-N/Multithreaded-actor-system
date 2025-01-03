@@ -20,6 +20,11 @@ add_executable(actor_system
     ${INCL_DIR}/Utils.hpp
     ${SRC_DIR}/Worker.cpp
     ${INCL_DIR}/Worker.hpp
+    ${SRC_DIR}/ResultAccumulator.cpp
+    ${INCL_DIR}/ResultAccumulator.hpp
+    ${SRC_DIR}/Sender.cpp
+    ${INCL_DIR}/Sender.hpp
+    ${INCL_DIR}/AtomConfig.hpp
 )
 
 include_directories(

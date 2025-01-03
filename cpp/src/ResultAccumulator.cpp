@@ -14,7 +14,7 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
         {
             self->println("I am results_accumulator actor {}", cities.size());
         },
-        [this](City city)
+        [this](send_city, City city)
         {
             cities.push_back(city);
             self->println("City: {} added to accumulator", city.name);

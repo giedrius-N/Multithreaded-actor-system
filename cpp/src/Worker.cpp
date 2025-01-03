@@ -13,7 +13,7 @@ void worker_actor_state::process_cities(std::vector<City>& cities)
 
         if (comfortIndex > 1000)
         {
-            self->send(results_accumulator, city);
+            self->mail(send_city_v, city).send(results_accumulator);
         }
     }
 
