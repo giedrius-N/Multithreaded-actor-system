@@ -18,6 +18,8 @@ add_executable(actor_system
     ${INCL_DIR}/CityTypes.hpp
     ${SRC_DIR}/Utils.cpp
     ${INCL_DIR}/Utils.hpp
+    ${SRC_DIR}/Worker.cpp
+    ${INCL_DIR}/Worker.hpp
 )
 
 include_directories(

@@ -8,6 +8,7 @@
 
 #include "CityTypes.hpp"
 #include "Utils.hpp"
+#include "Worker.hpp"
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -22,12 +23,6 @@ struct sender_actor_trait
     using signatures = type_list<result<void>(std::vector<City>), result<void>(caf::unit_t)>;
 };
 using sender_actor = typed_actor<sender_actor_trait>;
-
-struct worker_actor_trait
-{
-    using signatures = type_list<result<void>(City), result<void>(caf::unit_t)>;
-};
-using worker_actor = typed_actor<worker_actor_trait>;
 
 struct main_actor_trait
 {
@@ -137,33 +132,11 @@ struct sender_actor_state
             [this](std::vector<City> cities)
             {
                 self->println("Received cities, starting socket server...");
-                std::thread(&sender_actor_state::start_socket_server, this).detach();
+                //std::thread(&sender_actor_state::start_socket_server, this).detach();
             },
             [this](caf::unit_t)
             {
                 self->println("Sender actor triggered with unit_t");
-            }
-        };
-    }
-};
-
-
-struct worker_actor_state
-{
-    worker_actor::pointer self;
-
-    explicit worker_actor_state(worker_actor::pointer selfptr) : self(selfptr) {}
-
-    worker_actor::behavior_type make_behavior()
-    {
-        return {
-            [this](City city)
-            {
-                self->println("Processing city in worker: {}", city.name);
-            },
-            [this](caf::unit_t)
-            {
-                self->println("Worker actor triggered with unit_t");
             }
         };
     }
@@ -184,7 +157,8 @@ struct main_actor_state
         return {
             [this](const std::string& file_path)
             {
-                cities = Utils::ReadJSONFile(file_path);
+                std::string jsonStr = Utils::ReadJSONFile(file_path);
+                cities = Utils::GetCities(jsonStr);
                 if (!cities.empty())
                 {
                     self->println("File loaded successfully: {}", file_path);
@@ -197,13 +171,29 @@ struct main_actor_state
             },
             [this](caf::unit_t)
             {
+                int sum = 0;
                 if (!cities.empty())
                 {
                     self->println("Distributing data to sender and workers...");
-                    self->send(sender, cities);
-                    for (size_t i = 0; i < cities.size(); ++i)
+                    int num_workers = workers.size();
+                    int total_items = cities.size();
+                    
+                    int base_size = total_items / num_workers;
+                    int extra_items = total_items % num_workers;
+                    
+                    auto current = cities.begin();
+                    
+                    for (int i = 0; i < num_workers; ++i) 
                     {
-                        self->send(workers[i % workers.size()], cities[i]);
+                        int worker_batch_size = base_size + (i < extra_items ? 1 : 0);
+                        
+                        std::vector<City> batch(current, current + worker_batch_size);
+                        if (!batch.empty()) 
+                        {
+                            self->send(workers[i], batch);
+                        }
+                        
+                        current += worker_batch_size;
                     }
                 }
                 else
@@ -288,10 +278,17 @@ struct printer_actor_state
 void caf_main(actor_system& sys)
 {
     auto sender = sys.spawn(actor_from_state<sender_actor_state>);
-    auto worker1 = sys.spawn(actor_from_state<worker_actor_state>);
-    auto worker2 = sys.spawn(actor_from_state<worker_actor_state>);
-    auto worker3 = sys.spawn(actor_from_state<worker_actor_state>);
-    std::vector<worker_actor> workers = {worker1, worker2, worker3};
+
+    int workersCnt = 3;
+    
+    std::vector<worker_actor> workers;
+    workers.reserve(workersCnt);
+    
+    for (int i = 0; i < workersCnt; i++)
+    {
+        auto worker = sys.spawn(actor_from_state<worker_actor_state>);
+        workers.push_back(worker);
+    }
 
     auto main_actor_hdl = sys.spawn(actor_from_state<main_actor_state>, sender, workers);
 
@@ -306,6 +303,8 @@ void caf_main(actor_system& sys)
     self->send(results_accumulator, caf::unit_t{});
     self->send(getter, caf::unit_t{});
     self->send(printer, caf::unit_t{});
+
+
 
     std::cin.get();
 }
