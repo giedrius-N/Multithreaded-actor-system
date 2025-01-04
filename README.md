@@ -15,7 +15,7 @@ To build the C++ code, follow these steps:
    ```bash
    cmake -G "Visual Studio 17 2022" -A x64 ..
    ```
-   You can use any compiler that supports C++ 20
+   You can use any compiler that supports C++ 17
 
 3. Build the project in Debug mode:
    ```bash
@@ -27,7 +27,7 @@ To build the C++ code, follow these steps:
    cmake --build . --config Release
    ```
 
-## TODO:
+## TODOs:
 
  - [x] C++ main -> C++ worker -> C++ results accumulator
- - [ ] C++ main -> C++ sender -> network (sockets) -> Python getter -> Python worker -> Python sender -> network (sockets) -> C++ getter -> C++ results accumulator
+ - [x] C++ main -> C++ sender -> network (sockets) -> Python getter -> Python worker -> Python sender -> network (sockets) -> C++ getter -> C++ results accumulator -> C++ printer

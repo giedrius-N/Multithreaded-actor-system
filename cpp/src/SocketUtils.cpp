@@ -46,38 +46,15 @@ SOCKET SocketUtils::AcceptClient(SOCKET serverSocket, std::string& clientIp)
     return clientSocket;
 }
 
-/*
 bool SocketUtils::SendMessage(SOCKET clientSocket, const std::string& message) 
 {
-    return send(clientSocket, message.c_str(), static_cast<int>(message.size()), 0) != SOCKET_ERROR;
-}
-
-std::string SocketUtils::ReceiveMessage(SOCKET clientSocket) 
-{
-    char buffer[1024];
-    int received = recv(clientSocket, buffer, sizeof(buffer) - 1, 0);
-
-    if (received > 0) 
-    {
-        buffer[received] = '\0';
-        return std::string(buffer);
-    }
-
-    return {};
-}
-*/
-
-bool SocketUtils::SendMessage(SOCKET clientSocket, const std::string& message) 
-{
-    // Send the size of the message first
     uint32_t messageSize = static_cast<uint32_t>(message.size());
-    messageSize = htonl(messageSize); // Convert to network byte order
+    messageSize = htonl(messageSize);
     if (send(clientSocket, reinterpret_cast<char*>(&messageSize), sizeof(messageSize), 0) == SOCKET_ERROR) 
     {
         return false;
     }
 
-    // Send the message in chunks
     size_t bytesSent = 0;
     while (bytesSent < message.size()) 
     {
@@ -94,15 +71,13 @@ bool SocketUtils::SendMessage(SOCKET clientSocket, const std::string& message)
 
 std::string SocketUtils::ReceiveMessage(SOCKET clientSocket) 
 {
-    // Receive the size of the message first
     uint32_t messageSize = 0;
     if (recv(clientSocket, reinterpret_cast<char*>(&messageSize), sizeof(messageSize), 0) <= 0) 
     {
         return {};
     }
-    messageSize = ntohl(messageSize); // Convert to host byte order
+    messageSize = ntohl(messageSize);
 
-    // Receive the message in chunks
     std::string message;
     message.resize(messageSize);
 
@@ -112,7 +87,7 @@ std::string SocketUtils::ReceiveMessage(SOCKET clientSocket)
         int received = recv(clientSocket, &message[bytesReceived], static_cast<int>(messageSize - bytesReceived), 0);
         if (received <= 0) 
         {
-            return {}; // Connection closed or error occurred
+            return {};
         }
         bytesReceived += received;
     }

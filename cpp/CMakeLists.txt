@@ -20,12 +20,18 @@ add_executable(actor_system
     ${INCL_DIR}/Utils.hpp
     ${SRC_DIR}/SocketUtils.cpp
     ${INCL_DIR}/SocketUtils.hpp
+    ${SRC_DIR}/MainActor.cpp
+    ${INCL_DIR}/MainActor.hpp
     ${SRC_DIR}/Worker.cpp
     ${INCL_DIR}/Worker.hpp
     ${SRC_DIR}/ResultAccumulator.cpp
     ${INCL_DIR}/ResultAccumulator.hpp
     ${SRC_DIR}/Sender.cpp
     ${INCL_DIR}/Sender.hpp
+    ${SRC_DIR}/Getter.cpp
+    ${INCL_DIR}/Getter.hpp
+    ${SRC_DIR}/Printer.cpp
+    ${INCL_DIR}/Printer.hpp
     ${INCL_DIR}/AtomConfig.hpp
 )
 
