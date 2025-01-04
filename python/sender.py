@@ -18,7 +18,6 @@ def sender_process(result_queue: Queue) -> None:
                 break
 
             accumulated_results.append(result)
-            print(f"Accumulated result: {result}")
         except Exception as e:
             print(f"Error while processing result queue: {e}")
             break
@@ -39,8 +38,6 @@ def sender_process(result_queue: Queue) -> None:
             client_socket.sendall(struct.pack('!I', message_size))
 
             client_socket.sendall(message.encode())
-
-            print(f"Sent message to server: {message}")
 
     except ConnectionRefusedError:
         print("Failed to connect to Getter actor. Make sure the server is running.")

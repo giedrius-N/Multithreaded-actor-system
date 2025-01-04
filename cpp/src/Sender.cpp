@@ -24,6 +24,34 @@ void sender_actor_state::start_socket_server(const std::string& message)
 
     self->println("Socket server listening on port 3490...");
 
+    // Set up timeout
+    fd_set readfds;
+    struct timeval timeout;
+    timeout.tv_sec = 10; // 10 seconds timeout
+    timeout.tv_usec = 0;
+
+    FD_ZERO(&readfds);
+    FD_SET(serverSocket, &readfds);
+
+    int activity = select(0, &readfds, nullptr, nullptr, &timeout);
+
+    if (activity == 0) 
+    {
+        self->println("No client connection within timeout. Shutting down.");
+        SocketUtils::CleanupSocket(serverSocket);
+        SocketUtils::CleanupWinsock();
+        self->quit();
+        return;
+    } 
+    else if (activity < 0) 
+    {
+        self->println("Error occurred during select().");
+        SocketUtils::CleanupSocket(serverSocket);
+        SocketUtils::CleanupWinsock();
+        self->quit();
+        return;
+    }
+
     std::string clientIp;
     SOCKET clientSocket = SocketUtils::AcceptClient(serverSocket, clientIp);
 
@@ -60,7 +88,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
         } 
         else 
         {
-            self->println("Failed to send greeting.");
+            self->println("Failed to send message.");
         }
 
         SocketUtils::CleanupSocket(clientSocket);
@@ -71,6 +99,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
     self->println("Sender socket server shut down.");
     self->quit();
 }
+
 
 
 

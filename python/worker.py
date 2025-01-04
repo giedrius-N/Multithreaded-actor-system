@@ -18,4 +18,3 @@ def worker_process(work_queue: Queue, result_queue: Queue) -> None:
 
         if sunnyDaysIndex >= 62500:  # Filter to only include items with sunnyDays >= 250
             result_queue.put(item)
-            print(f"Added filtered item to result queue: {item}")

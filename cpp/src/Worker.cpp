@@ -25,7 +25,7 @@ int worker_actor_state::calculate_comfort_index(const City& city)
     double averageTemp = city.averageTemp;
 
     // Mock calculation for mocking long running operation
-    for (int i = 0; i < 1000000; i++)
+    for (int i = 0; i < 10000000; i++)
     {
         averageTemp += 0.1;
         averageTemp -= 0.1;
