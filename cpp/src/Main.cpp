@@ -28,7 +28,7 @@ void caf_main(actor_system& sys)
     
     scoped_actor self{sys};
 
-    self->mail(send_json_path_v, "..\\..\\..\\data\\dataset_1.json").send(main_actor);
+    self->mail(send_json_path_v, "..\\..\\..\\data\\dataset_2.json").send(main_actor);
     self->mail(start_processing_v).send(main_actor);
 
     self->mail(get_cities_from_python_v).send(getter);

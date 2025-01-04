@@ -12,7 +12,7 @@
 struct results_accumulator_actor_trait
 {
     using signatures = caf::type_list<
-        caf::result<void>(send_city, City),
+        caf::result<void>(send_city, City, std::string),
         caf::result<void>(done_processing)
     >;
 };
@@ -26,8 +26,11 @@ struct results_accumulator_actor_state
     std::vector<City> cities;
     int num_workers;
     int completed_workers = 0;
+    int cities_from_python = 0;
+    int cities_from_cpp = 0;
 
     std::unordered_set<std::string> city_ids;
+    std::unordered_map<std::string, std::pair<bool, bool>> city_sources;
 
     explicit results_accumulator_actor_state(results_accumulator_actor::pointer selfptr, int workersCnt, printer_actor printer);
 

@@ -13,7 +13,7 @@ void worker_actor_state::process_cities(std::vector<City>& cities)
 
         if (comfortIndex > 323) // Check if average temp index is greater than 18 degrees
         {
-            self->mail(send_city_v, city).send(results_accumulator);
+            self->mail(send_city_v, city, "cpp").send(results_accumulator);
         }
     }
 

@@ -62,6 +62,13 @@ void getter_actor_state::start_socket_server()
 
 void getter_actor_state::send_items_to_results(const std::string &jsonStr)
 {
+    if (jsonStr == "[]")
+    {
+        self->println("Received empty JSON from Python.");
+        self->mail(done_processing_v).send(results_accumulator);
+        return;
+    }
+
     std::vector<City> cities = Utils::ParseCities(jsonStr);
     if (cities.empty())
     {
@@ -71,7 +78,7 @@ void getter_actor_state::send_items_to_results(const std::string &jsonStr)
 
     for (const auto &city : cities)
     {
-        self->mail(send_city_v, city).send(results_accumulator);
+        self->mail(send_city_v, city, "python").send(results_accumulator);
     }
 
     self->mail(done_processing_v).send(results_accumulator);
