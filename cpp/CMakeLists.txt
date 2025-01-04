@@ -20,6 +20,8 @@ add_executable(actor_system
     ${INCL_DIR}/Utils.hpp
     ${SRC_DIR}/SocketUtils.cpp
     ${INCL_DIR}/SocketUtils.hpp
+    ${SRC_DIR}/MainActor.cpp
+    ${INCL_DIR}/MainActor.hpp
     ${SRC_DIR}/Worker.cpp
     ${INCL_DIR}/Worker.hpp
     ${SRC_DIR}/ResultAccumulator.cpp

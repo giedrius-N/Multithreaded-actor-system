@@ -12,7 +12,6 @@
 struct results_accumulator_actor_trait
 {
     using signatures = caf::type_list<
-        caf::result<void>(caf::unit_t), 
         caf::result<void>(send_city, City),
         caf::result<void>(done_processing)
     >;

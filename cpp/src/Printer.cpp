@@ -47,10 +47,6 @@ void printer_actor_state::print_cities(const std::string& jsonStr)
 printer_actor::behavior_type printer_actor_state::make_behavior()
 {
     return {
-        [this](caf::unit_t)
-        {
-            self->println("I am printer actor");
-        },
         [this](send_printer, std::string message)
         {
             print_cities(message);

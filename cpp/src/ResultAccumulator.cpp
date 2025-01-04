@@ -9,10 +9,6 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
 {
     return 
     {
-        [this](caf::unit_t)
-        {
-            self->println("I am results_accumulator actor {}", cities.size());
-        },
         [this](send_city, City city)
         {
             if (city_ids.insert(city.id).second)

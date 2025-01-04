@@ -11,7 +11,6 @@
 struct printer_actor_trait
 {
     using signatures = type_list<
-        result<void>(caf::unit_t),
         result<void>(send_printer, std::string)
     >;
 };
