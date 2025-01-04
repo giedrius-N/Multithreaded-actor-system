@@ -28,6 +28,8 @@ add_executable(actor_system
     ${INCL_DIR}/Sender.hpp
     ${SRC_DIR}/Getter.cpp
     ${INCL_DIR}/Getter.hpp
+    ${SRC_DIR}/Printer.cpp
+    ${INCL_DIR}/Printer.hpp
     ${INCL_DIR}/AtomConfig.hpp
 )
 

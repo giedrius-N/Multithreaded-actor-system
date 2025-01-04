@@ -16,8 +16,13 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
         },
         [this](send_city, City city)
         {
-            cities.push_back(city);
-            self->println("City: {} added to accumulator", city.name);
+            //cities.push_back(city);
+            //self->println("City: {} added to accumulator", city.name);
+
+            if (city_ids.insert(city.id).second)
+            {
+                cities.push_back(city);
+            }
         },
         [this](std::string done_message)
         {

@@ -13,6 +13,7 @@ CAF_ADD_TYPE_ID(system, (std::vector<City>))
 CAF_ADD_ATOM(system, send_city)
 CAF_ADD_ATOM(system, send_cities)
 CAF_ADD_ATOM(system, python_done)
+CAF_ADD_ATOM(system, get_cities_from_python)
 
 CAF_END_TYPE_ID_BLOCK(system)
 

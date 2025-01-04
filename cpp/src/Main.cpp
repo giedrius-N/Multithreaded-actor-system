@@ -12,6 +12,7 @@
 #include "ResultAccumulator.hpp"
 #include "Sender.hpp"
 #include "Getter.hpp"
+#include "Printer.hpp"
 
 #include "AtomConfig.hpp"
 
@@ -51,7 +52,7 @@ struct main_actor_state
 
                 self->mail(send_cities_v, jsonStr).send(sender);
 
-                cities = Utils::GetCities(jsonStr);
+                cities = Utils::ParseCities(jsonStr);
                 if (!cities.empty())
                 {
                     self->println("File loaded successfully: {}", file_path);
@@ -98,28 +99,28 @@ struct main_actor_state
     }
 };
 
-struct printer_actor_trait
-{
-    using signatures = type_list<result<void>(caf::unit_t)>;
-};
-using printer_actor = typed_actor<printer_actor_trait>;
+// struct printer_actor_trait
+// {
+//     using signatures = type_list<result<void>(caf::unit_t)>;
+// };
+// using printer_actor = typed_actor<printer_actor_trait>;
 
-struct printer_actor_state
-{
-    printer_actor::pointer self;
+// struct printer_actor_state
+// {
+//     printer_actor::pointer self;
 
-    explicit printer_actor_state(printer_actor::pointer selfptr) : self(selfptr) {}
+//     explicit printer_actor_state(printer_actor::pointer selfptr) : self(selfptr) {}
 
-    printer_actor::behavior_type make_behavior()
-    {
-        return {
-            [this](caf::unit_t)
-            {
-                self->println("I am printer actor");
-            }
-        };
-    }
-};
+//     printer_actor::behavior_type make_behavior()
+//     {
+//         return {
+//             [this](caf::unit_t)
+//             {
+//                 self->println("I am printer actor");
+//             }
+//         };
+//     }
+// };
 
 void caf_main(actor_system& sys)
 {
@@ -141,7 +142,8 @@ void caf_main(actor_system& sys)
     auto main_actor_hdl = sys.spawn(actor_from_state<main_actor_state>, sender, workers);
 
     
-    auto getter = sys.spawn(actor_from_state<getter_actor_state>);
+    auto getter = sys.spawn(actor_from_state<getter_actor_state>, results_accumulator);
+    
     auto printer = sys.spawn(actor_from_state<printer_actor_state>);
 
     scoped_actor self{sys};
@@ -150,7 +152,7 @@ void caf_main(actor_system& sys)
 
     self->send(results_accumulator, caf::unit_t{});
 
-    self->send(getter, caf::unit_t{});
+    self->mail(get_cities_from_python_v).send(getter);
 
     self->send(printer, caf::unit_t{});
 

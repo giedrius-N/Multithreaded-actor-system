@@ -1,7 +1,9 @@
 #include "Getter.hpp"
 #include "SocketUtils.hpp"
+#include "Utils.hpp"
 
-getter_actor_state::getter_actor_state(getter_actor::pointer selfptr) : self(selfptr) {}
+getter_actor_state::getter_actor_state(getter_actor::pointer selfptr, results_accumulator_actor accumulator)
+     : self(selfptr), results_accumulator(std::move(accumulator)) {}
 
 void getter_actor_state::start_socket_server()
 {
@@ -59,11 +61,26 @@ void getter_actor_state::start_socket_server()
     self->quit();
 }
 
+void getter_actor_state::send_items_to_results(const std::string &jsonStr)
+{
+    std::vector<City> cities = Utils::ParseCities(jsonStr);
+    if (cities.empty())
+    {
+        self->println("Failed to parse cities from JSON.");
+        return;
+    }
+
+    for (const auto &city : cities)
+    {
+        self->mail(send_city_v, city).send(results_accumulator);
+    }
+}
+
 getter_actor::behavior_type getter_actor_state::make_behavior()
 {
     return 
     {
-        [this](caf::unit_t)
+        [this](get_cities_from_python)
         {
             start_socket_server();
         }

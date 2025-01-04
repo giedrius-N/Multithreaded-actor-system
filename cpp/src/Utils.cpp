@@ -17,7 +17,7 @@ std::string Utils::ReadJSONFile(const std::string& filePath)
     return fileContent;
 }
 
-std::vector<City> Utils::GetCities(const std::string& jsonString)
+std::vector<City> Utils::ParseCities(const std::string& jsonString)
 {
     caf::json_reader reader;
     if (!reader.load(jsonString))

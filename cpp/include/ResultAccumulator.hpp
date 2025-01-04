@@ -5,8 +5,8 @@
 #include "caf/actor_system.hpp"
 #include "caf/typed_event_based_actor.hpp"
 #include "CityTypes.hpp"
-
 #include "AtomConfig.hpp"
+#include <unordered_set>
 
 struct results_accumulator_actor_trait
 {
@@ -25,6 +25,8 @@ struct results_accumulator_actor_state
     std::vector<City> cities;
     int num_workers;
     int completed_workers = 0;
+
+    std::unordered_set<std::string> city_ids;
 
     explicit results_accumulator_actor_state(results_accumulator_actor::pointer selfptr, int workersCnt);
 
