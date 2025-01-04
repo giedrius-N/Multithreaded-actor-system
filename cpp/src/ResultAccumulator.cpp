@@ -1,10 +1,9 @@
 #include "ResultAccumulator.hpp"
 #include "caf/actor_ostream.hpp"
+#include "Utils.hpp"
 
-#include <fstream>
-
-results_accumulator_actor_state::results_accumulator_actor_state(results_accumulator_actor::pointer selfptr, int workersCnt)
-    : self(selfptr), num_workers(workersCnt) {}
+results_accumulator_actor_state::results_accumulator_actor_state(results_accumulator_actor::pointer selfptr, int workersCnt, printer_actor printer)
+    : self(selfptr), num_workers(workersCnt), printer(std::move(printer))  {}
 
 results_accumulator_actor::behavior_type results_accumulator_actor_state::make_behavior()
 {
@@ -16,28 +15,23 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
         },
         [this](send_city, City city)
         {
-            //cities.push_back(city);
-            //self->println("City: {} added to accumulator", city.name);
-
             if (city_ids.insert(city.id).second)
             {
                 cities.push_back(city);
             }
         },
-        [this](std::string done_message)
+        [this](done_processing)
         {
             completed_workers++;
             self->println("Worker done, total completed: {}", completed_workers);
 
-            if (completed_workers == num_workers) 
+            if (completed_workers == num_workers + 1) 
             {
                 self->println("All workers completed. Total cities: {}", cities.size());
+                
+                std::string serializedCities = Utils::SerializeCities(cities);
 
-                // Write to file a number of cities
-                std::ofstream file("..\\..\\..\\results\\cities.txt");
-                file << cities.size();
-                file.close();
-
+                self->mail(send_printer_v, serializedCities).send(printer);
             }
         }
     };

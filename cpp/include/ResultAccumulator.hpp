@@ -6,6 +6,7 @@
 #include "caf/typed_event_based_actor.hpp"
 #include "CityTypes.hpp"
 #include "AtomConfig.hpp"
+#include "Printer.hpp"
 #include <unordered_set>
 
 struct results_accumulator_actor_trait
@@ -13,7 +14,7 @@ struct results_accumulator_actor_trait
     using signatures = caf::type_list<
         caf::result<void>(caf::unit_t), 
         caf::result<void>(send_city, City),
-        caf::result<void>(std::string)
+        caf::result<void>(done_processing)
     >;
 };
 using results_accumulator_actor = caf::typed_actor<results_accumulator_actor_trait>;
@@ -21,6 +22,7 @@ using results_accumulator_actor = caf::typed_actor<results_accumulator_actor_tra
 struct results_accumulator_actor_state
 {
     results_accumulator_actor::pointer self;
+    printer_actor printer;
 
     std::vector<City> cities;
     int num_workers;
@@ -28,7 +30,7 @@ struct results_accumulator_actor_state
 
     std::unordered_set<std::string> city_ids;
 
-    explicit results_accumulator_actor_state(results_accumulator_actor::pointer selfptr, int workersCnt);
+    explicit results_accumulator_actor_state(results_accumulator_actor::pointer selfptr, int workersCnt, printer_actor printer);
 
     results_accumulator_actor::behavior_type make_behavior();
 };

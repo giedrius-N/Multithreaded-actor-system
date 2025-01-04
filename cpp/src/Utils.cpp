@@ -1,5 +1,6 @@
 #include "Utils.hpp"
 #include "caf/json_reader.hpp"
+#include "caf/json_writer.hpp"
 
 std::string Utils::ReadJSONFile(const std::string& filePath)
 {
@@ -35,4 +36,17 @@ std::vector<City> Utils::ParseCities(const std::string& jsonString)
     }
 
     return cities;
+}
+
+std::string Utils::SerializeCities(const std::vector<City>& cities)
+{
+    caf::json_writer writer;
+
+    if (!writer.apply(cities))
+    {
+        std::cerr << "Could not serialize cities to JSON" << std::endl;
+        return "";
+    }
+
+    return std::string(writer.str());
 }

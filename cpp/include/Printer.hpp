@@ -10,13 +10,18 @@
 
 struct printer_actor_trait
 {
-    using signatures = type_list<result<void>(caf::unit_t)>;
+    using signatures = type_list<
+        result<void>(caf::unit_t),
+        result<void>(send_printer, std::string)
+    >;
 };
 using printer_actor = typed_actor<printer_actor_trait>;
 
 struct printer_actor_state
 {
     printer_actor::pointer self;
+    // Method to print cities from json string nicely formated
+    void print_cities(const std::string& jsonStr);
 
     explicit printer_actor_state(printer_actor::pointer selfptr);
 

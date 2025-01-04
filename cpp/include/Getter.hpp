@@ -22,7 +22,6 @@ struct getter_actor_state
     results_accumulator_actor results_accumulator; 
 
     explicit getter_actor_state(getter_actor::pointer selfptr, results_accumulator_actor accumulator);
-    //explicit worker_actor_state(worker_actor::pointer selfptr, results_accumulator_actor accumulator);
 
     std::atomic<bool> running_{false};
     void start_socket_server();

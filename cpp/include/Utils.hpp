@@ -16,6 +16,7 @@ private:
 public:
     static std::string ReadJSONFile(const std::string& filePath);
     static std::vector<City> ParseCities(const std::string& jsonString);
+    static std::string SerializeCities(const std::vector<City>& cities);
 };
 
 

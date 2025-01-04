@@ -43,7 +43,7 @@ void getter_actor_state::start_socket_server()
         std::string message = SocketUtils::ReceiveMessage(clientSocket);
         if (!message.empty())
         {
-            self->println("Received message: {}", message);
+            send_items_to_results(message);
             running_ = false;
         }
         else
@@ -58,7 +58,6 @@ void getter_actor_state::start_socket_server()
     SocketUtils::CleanupWinsock();
 
     self->println("Getter socket server shut down.");
-    self->quit();
 }
 
 void getter_actor_state::send_items_to_results(const std::string &jsonStr)
@@ -74,6 +73,8 @@ void getter_actor_state::send_items_to_results(const std::string &jsonStr)
     {
         self->mail(send_city_v, city).send(results_accumulator);
     }
+
+    self->mail(done_processing_v).send(results_accumulator);
 }
 
 getter_actor::behavior_type getter_actor_state::make_behavior()

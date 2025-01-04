@@ -16,11 +16,6 @@
 
 #include "AtomConfig.hpp"
 
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#include <thread>
-#include <cstring> 
-
 using namespace caf;
 using namespace std::literals;
 
@@ -99,34 +94,12 @@ struct main_actor_state
     }
 };
 
-// struct printer_actor_trait
-// {
-//     using signatures = type_list<result<void>(caf::unit_t)>;
-// };
-// using printer_actor = typed_actor<printer_actor_trait>;
-
-// struct printer_actor_state
-// {
-//     printer_actor::pointer self;
-
-//     explicit printer_actor_state(printer_actor::pointer selfptr) : self(selfptr) {}
-
-//     printer_actor::behavior_type make_behavior()
-//     {
-//         return {
-//             [this](caf::unit_t)
-//             {
-//                 self->println("I am printer actor");
-//             }
-//         };
-//     }
-// };
-
 void caf_main(actor_system& sys)
 {
     int workersCnt = 3;
 
-    auto results_accumulator = sys.spawn(actor_from_state<results_accumulator_actor_state>, workersCnt);
+    auto printer = sys.spawn(actor_from_state<printer_actor_state>);
+    auto results_accumulator = sys.spawn(actor_from_state<results_accumulator_actor_state>, workersCnt, printer);
 
     auto sender = sys.spawn(actor_from_state<sender_actor_state>);
 
@@ -144,8 +117,6 @@ void caf_main(actor_system& sys)
     
     auto getter = sys.spawn(actor_from_state<getter_actor_state>, results_accumulator);
     
-    auto printer = sys.spawn(actor_from_state<printer_actor_state>);
-
     scoped_actor self{sys};
     self->send(main_actor_hdl, "..\\..\\..\\data\\dataset_1.json");
     self->send(main_actor_hdl, caf::unit_t{});
