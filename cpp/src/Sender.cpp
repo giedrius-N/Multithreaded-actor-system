@@ -46,7 +46,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
 
                 if (ack == "ACK") 
                 {
-                    self->println("ACK received. Shutting down.");
+                    self->println("ACK received.");
                 } 
                 else 
                 {
@@ -68,7 +68,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
 
     SocketUtils::CleanupSocket(serverSocket);
     SocketUtils::CleanupWinsock();
-    self->println("Server socket shut down.");
+    self->println("Sender socket server shut down.");
     self->quit();
 }
 

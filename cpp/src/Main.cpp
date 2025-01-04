@@ -11,6 +11,7 @@
 #include "Worker.hpp"
 #include "ResultAccumulator.hpp"
 #include "Sender.hpp"
+#include "Getter.hpp"
 
 #include "AtomConfig.hpp"
 
@@ -97,34 +98,11 @@ struct main_actor_state
     }
 };
 
-struct getter_actor_trait
-{
-    using signatures = type_list<result<void>(caf::unit_t)>;
-};
-using getter_actor = typed_actor<getter_actor_trait>;
-
 struct printer_actor_trait
 {
     using signatures = type_list<result<void>(caf::unit_t)>;
 };
 using printer_actor = typed_actor<printer_actor_trait>;
-
-struct getter_actor_state
-{
-    getter_actor::pointer self;
-
-    explicit getter_actor_state(getter_actor::pointer selfptr) : self(selfptr) {}
-
-    getter_actor::behavior_type make_behavior()
-    {
-        return {
-            [this](caf::unit_t)
-            {
-                self->println("I am getter actor");
-            }
-        };
-    }
-};
 
 struct printer_actor_state
 {

@@ -26,6 +26,8 @@ add_executable(actor_system
     ${INCL_DIR}/ResultAccumulator.hpp
     ${SRC_DIR}/Sender.cpp
     ${INCL_DIR}/Sender.hpp
+    ${SRC_DIR}/Getter.cpp
+    ${INCL_DIR}/Getter.hpp
     ${INCL_DIR}/AtomConfig.hpp
 )
 
