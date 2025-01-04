@@ -29,5 +29,5 @@ To build the C++ code, follow these steps:
 
 ## TODO:
 
- - [ ] C++ main -> C++ worker -> C++ results accumulator
+ - [x] C++ main -> C++ worker -> C++ results accumulator
  - [ ] C++ main -> C++ sender -> network (sockets) -> Python getter -> Python worker -> Python sender -> network (sockets) -> C++ getter -> C++ results accumulator
