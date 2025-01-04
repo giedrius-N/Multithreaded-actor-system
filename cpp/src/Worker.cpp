@@ -18,6 +18,7 @@ void worker_actor_state::process_cities(std::vector<City>& cities)
     }
 
     self->mail(done_processing_v).send(results_accumulator);
+    self->quit();
 }
 
 int worker_actor_state::calculate_comfort_index(const City& city)

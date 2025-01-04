@@ -2,7 +2,7 @@ from multiprocessing import Queue
 
 def process_item(item) -> int:
     # Simulate computation
-    for i in range(10000000):
+    for i in range(2000000):
         pass
 
     return item["sunnyDays"] ** 2

@@ -52,6 +52,8 @@ main_actor::behavior_type main_actor_state::make_behavior()
                     
                     current += worker_batch_size;
                 }
+
+                self->quit();
             }
             else
             {

@@ -3,7 +3,10 @@
 #include "Utils.hpp"
 
 results_accumulator_actor_state::results_accumulator_actor_state(results_accumulator_actor::pointer selfptr, int workersCnt, printer_actor printer)
-    : self(selfptr), num_workers(workersCnt), printer(std::move(printer))  {}
+    : self(selfptr), num_workers(workersCnt), printer(std::move(printer))  
+    {
+        start_time = clock::now();
+    }
 
 results_accumulator_actor::behavior_type results_accumulator_actor_state::make_behavior()
 {
@@ -35,6 +38,7 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
             completed_workers++;
             self->println("Worker done, total completed: {}", completed_workers);
 
+            // All workers + 1 for the getter - items from python
             if (completed_workers == num_workers + 1) 
             {
                 self->println("All workers completed. Total cities that matches both filters: {}", cities.size());
@@ -44,6 +48,14 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
                 std::string serializedCities = Utils::SerializeCities(cities);
 
                 self->mail(send_printer_v, serializedCities).send(printer);
+
+                self->quit();
+            }
+            else if (completed_workers == num_workers)
+            {
+                end_time = clock::now();
+                std::chrono::duration<double> elapsed = end_time - start_time;
+                self->println("All workers completed. Processing time: {} seconds", elapsed.count());
             }
         }
     };

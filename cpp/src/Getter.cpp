@@ -111,6 +111,7 @@ void getter_actor_state::send_items_to_results(const std::string &jsonStr)
     }
 
     self->mail(done_processing_v).send(results_accumulator);
+    self->quit();
 }
 
 getter_actor::behavior_type getter_actor_state::make_behavior()

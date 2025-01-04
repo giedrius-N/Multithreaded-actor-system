@@ -11,6 +11,7 @@ void printer_actor_state::print_cities(const std::string& jsonStr)
     if (cities.empty()) 
     {
         self->println("No cities to print.");
+        self->quit();
         return;
     }
     std::ofstream file("..\\..\\..\\results\\results.txt");
@@ -40,6 +41,8 @@ void printer_actor_state::print_cities(const std::string& jsonStr)
     }
 
     file.close();
+
+    self->quit();
 }
 
  
