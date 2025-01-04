@@ -29,7 +29,7 @@ struct sender_actor_state
     explicit sender_actor_state(sender_actor::pointer selfptr);
 
     std::atomic<bool> running_{false};
-    void start_socket_server();
+    void start_socket_server(const std::string& message);
 
     sender_actor::behavior_type make_behavior();
 };
