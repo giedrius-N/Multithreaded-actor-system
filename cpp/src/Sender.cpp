@@ -37,7 +37,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
 
         if (SocketUtils::SendMessage(clientSocket, message)) 
         {
-            self->println("Sent greeting to client.");
+            self->println("Sent data to client.");
 
             std::string ack = SocketUtils::ReceiveMessage(clientSocket);
             if (!ack.empty()) 

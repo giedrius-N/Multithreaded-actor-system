@@ -1,7 +1,9 @@
 import socket
 import struct
+import json
+from multiprocessing import Queue
 
-def main():
+def getter_process(work_queue: Queue) -> None:
     server_address = '127.0.0.1'
     server_port = 3490
 
@@ -11,6 +13,7 @@ def main():
             client_socket.connect((server_address, server_port))
             print("Connected to server.")
 
+            # Receive size of the message
             size_data = client_socket.recv(4)
             if not size_data:
                 print("Failed to receive message size.")
@@ -18,6 +21,7 @@ def main():
 
             message_size = struct.unpack('!I', size_data)[0]
 
+            # Receive the message
             message = b""
             while len(message) < message_size:
                 chunk = client_socket.recv(message_size - len(message))
@@ -25,15 +29,23 @@ def main():
                     break
                 message += chunk
 
-            print(f"Received from server: {message.decode()}")
+            decoded_message = message.decode()
 
-            client_socket.sendall(b"ACK")
+            # Send ACK
+            ack_message = b"ACK"
+            size_prefix = struct.pack('!I', len(ack_message))
+            client_socket.sendall(size_prefix + ack_message)
             print("Sent ACK to server.")
+
+            # Parse JSON and put individual items in the work queue
+            try:
+                items = json.loads(decoded_message)
+                for item in items:
+                    work_queue.put(item)
+            except json.JSONDecodeError as e:
+                print(f"Failed to parse JSON: {e}")
 
     except ConnectionRefusedError:
         print("Connection failed. Make sure the server is running.")
     except Exception as e:
         print(f"An error occurred: {e}")
-
-if __name__ == "__main__":
-    main()

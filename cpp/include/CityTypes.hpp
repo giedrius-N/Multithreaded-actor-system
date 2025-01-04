@@ -7,7 +7,7 @@
 
 struct City 
 {
-    int id;
+    std::string id;
     std::string name;
     int sunnyDays;
     double averageTemp;
@@ -16,7 +16,8 @@ struct City
 template <class Inspector>
 bool inspect(Inspector& f, City& x) 
 {
-    return f.object(x).fields(
+    return f.object(x).fields
+    (
         f.field("id", x.id),
         f.field("name", x.name),
         f.field("sunnyDays", x.sunnyDays),
