@@ -1,3 +1,7 @@
+/*
+* Printer.cpp
+* Implementation of the printer actor that prints the results after processing the data
+*/
 #include "Printer.hpp"
 #include "Utils.hpp"
 

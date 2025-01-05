@@ -1,3 +1,7 @@
+/*
+* Utils.cpp
+* Implementation of the utility functions for reading and writing JSON files
+*/
 #include "Utils.hpp"
 #include "caf/json_reader.hpp"
 #include "caf/json_writer.hpp"
@@ -60,9 +64,6 @@ void Utils::PrintCities(const std::string& jsonStr, const std::string& header)
              << "\n";
         file << std::string(60, '-') << "\n";
     }
-
-    
-    
 
     for (const auto& city : cities) 
     {

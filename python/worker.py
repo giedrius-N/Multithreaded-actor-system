@@ -1,3 +1,7 @@
+"""
+Process that processes items from the work queue and puts the results in the result queue.
+"""
+
 from multiprocessing import Queue
 
 def process_item(item) -> int:

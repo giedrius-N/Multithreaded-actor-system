@@ -1,3 +1,7 @@
+/*
+* MainActor.hpp
+* Declaration of the main actor that processes the data and sends it to the workers and sender
+*/
 #ifndef MAIN_ACTOR_HPP
 #define MAIN_ACTOR_HPP
 

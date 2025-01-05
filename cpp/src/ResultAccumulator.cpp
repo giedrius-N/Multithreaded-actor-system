@@ -1,3 +1,7 @@
+/*
+* ResultAccumulator.cpp
+* Result accumulator actor implementation that accumulates the results from the worker actors and getter actor and sends the data to the printer actor for printing
+*/
 #include "ResultAccumulator.hpp"
 #include "caf/actor_ostream.hpp"
 #include "Utils.hpp"
@@ -35,9 +39,10 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
         [this](done_processing)
         {
             completed_workers++;
-            self->println("Worker done, total completed: {}", completed_workers);
 
             // All workers + 1 for the getter - items from python
+            // This is triggered when all C++ workers have finished processing
+            // and the getter has finished processing the items from Python
             if (completed_workers == num_workers + 1) 
             {
                 self->println("All workers completed. Total cities that matches both filters: {}", cities.size());

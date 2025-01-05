@@ -1,3 +1,7 @@
+/*
+* Worker.hpp
+* Declaration of the worker actor that processes the data and sends the results to the results accumulator actor
+*/
 #ifndef WORKER_HPP
 #define WORKER_HPP
 
@@ -10,8 +14,6 @@
 struct worker_actor_trait
 {
     using signatures = caf::type_list<
-        caf::result<void>(City), 
-        caf::result<void>(caf::unit_t), 
         caf::result<void>(send_cities, std::vector<City>)
     >;
 };

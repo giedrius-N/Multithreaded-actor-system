@@ -1,3 +1,7 @@
+/*
+* Worker.cpp
+* Implementation of the worker actor that processes the data and sends the results to the results accumulator actor
+*/
 #include "Worker.hpp"
 #include "caf/actor_ostream.hpp"
 #include "AtomConfig.hpp"
@@ -39,15 +43,6 @@ worker_actor::behavior_type worker_actor_state::make_behavior()
 {
     return 
     {
-        [this](City city)
-        {
-            std::vector cities = {city};
-            process_cities(cities);
-        },
-        [this](caf::unit_t)
-        {
-            self->println("Worker actor triggered with unit_t");
-        },
         [this](send_cities, std::vector<City> cities)
         {
             process_cities(cities);

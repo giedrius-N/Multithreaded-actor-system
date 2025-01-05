@@ -1,6 +1,9 @@
+/*
+* MainActor.cpp
+* Main actor implementation that loads the JSON file and sends the data to the worker actors for processing, to sender actor for sending data to Python
+*/
 #include "MainActor.hpp"
 #include "Utils.hpp"
-
 
 main_actor_state::main_actor_state(main_actor::pointer selfptr, sender_actor s, std::vector<worker_actor> w)
         : self(selfptr), sender(std::move(s)), workers(std::move(w)) {}

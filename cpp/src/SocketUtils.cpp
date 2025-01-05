@@ -1,3 +1,7 @@
+/*
+* SocketUtils.cpp
+* Implementation of the socket utility functions for creating and managing sockets
+*/
 #include "SocketUtils.hpp"
 #include <iostream>
 

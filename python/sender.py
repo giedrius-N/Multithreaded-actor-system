@@ -1,3 +1,7 @@
+"""
+Process that sends data to the server.
+"""
+
 import socket
 import struct
 import json

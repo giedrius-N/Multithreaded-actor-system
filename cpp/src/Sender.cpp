@@ -1,3 +1,7 @@
+/*
+* Sender.cpp
+* Implementation of the sender actor that sends the data to the Python server
+*/
 #include "Sender.hpp"
 #include "caf/actor_ostream.hpp"
 #include "SocketUtils.hpp"
@@ -27,7 +31,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
     // Set up timeout
     fd_set readfds;
     struct timeval timeout;
-    timeout.tv_sec = 10; // 10 seconds timeout
+    timeout.tv_sec = 10;
     timeout.tv_usec = 0;
 
     FD_ZERO(&readfds);
@@ -112,11 +116,6 @@ sender_actor::behavior_type sender_actor_state::make_behavior()
             self->println("Received cities, starting socket server...");
 
             start_socket_server(cities);
-            
-        },
-        [this](caf::unit_t) 
-        {
-            self->println("Sender actor triggered with unit_t");
         }
     };
 }

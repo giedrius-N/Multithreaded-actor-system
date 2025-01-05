@@ -1,3 +1,7 @@
+/*
+* ResultAccumulator.hpp
+* Declaration of the results accumulator actor that receives the processed data from the worker actors and getter actor
+*/
 #ifndef RESULT_ACCUMULATOR_HPP
 #define RESULT_ACCUMULATOR_HPP
 
