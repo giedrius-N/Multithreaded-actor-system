@@ -1,8 +1,12 @@
+"""
+Process that processes items from the work queue and puts the results in the result queue.
+"""
+
 from multiprocessing import Queue
 
 def process_item(item) -> int:
     # Simulate computation
-    for i in range(10000000):
+    for i in range(2000000):
         pass
 
     return item["sunnyDays"] ** 2
@@ -18,4 +22,3 @@ def worker_process(work_queue: Queue, result_queue: Queue) -> None:
 
         if sunnyDaysIndex >= 62500:  # Filter to only include items with sunnyDays >= 250
             result_queue.put(item)
-            print(f"Added filtered item to result queue: {item}")

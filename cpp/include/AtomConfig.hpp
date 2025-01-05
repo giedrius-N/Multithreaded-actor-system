@@ -1,3 +1,7 @@
+/*
+* AtomConfig.hpp
+* Configuration file for CAF atoms and city type
+*/
 #ifndef ATOM_CONFIG_HPP
 #define ATOM_CONFIG_HPP
 

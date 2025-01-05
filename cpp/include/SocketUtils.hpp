@@ -1,3 +1,7 @@
+/*
+* SocketUtils.hpp
+* Utility class for socket operations
+*/
 #ifndef SOCKET_UTILS_HPP
 #define SOCKET_UTILS_HPP
 

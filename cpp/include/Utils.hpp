@@ -1,3 +1,7 @@
+/*
+* Utils.hpp
+* Utility functions for reading and writing JSON files
+*/
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
@@ -17,8 +21,7 @@ public:
     static std::string ReadJSONFile(const std::string& filePath);
     static std::vector<City> ParseCities(const std::string& jsonString);
     static std::string SerializeCities(const std::vector<City>& cities);
+    static void PrintCities(const std::string& jsonStr, const std::string& header);
 };
-
-
 
 #endif // UTILS_HPP

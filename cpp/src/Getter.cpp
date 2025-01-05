@@ -27,6 +27,33 @@ void getter_actor_state::start_socket_server()
 
     self->println("Getter socket server listening on port 3491...");
 
+    fd_set readfds;
+    struct timeval timeout;
+    timeout.tv_sec = 100;
+    timeout.tv_usec = 0;
+
+    FD_ZERO(&readfds);
+    FD_SET(serverSocket, &readfds);
+
+    int activity = select(0, &readfds, nullptr, nullptr, &timeout);
+
+    if (activity == 0)
+    {
+        self->println("No client connection within timeout. Shutting down.");
+        SocketUtils::CleanupSocket(serverSocket);
+        SocketUtils::CleanupWinsock();
+        self->quit();
+        return;
+    }
+    else if (activity < 0)
+    {
+        self->println("Error occurred during select().");
+        SocketUtils::CleanupSocket(serverSocket);
+        SocketUtils::CleanupWinsock();
+        self->quit();
+        return;
+    }
+
     while (running_)
     {
         std::string clientIp;
@@ -58,10 +85,19 @@ void getter_actor_state::start_socket_server()
     SocketUtils::CleanupWinsock();
 
     self->println("Getter socket server shut down.");
+    self->quit();
 }
+
 
 void getter_actor_state::send_items_to_results(const std::string &jsonStr)
 {
+    if (jsonStr == "[]")
+    {
+        self->println("Received empty JSON from Python.");
+        self->mail(done_processing_v).send(results_accumulator);
+        return;
+    }
+
     std::vector<City> cities = Utils::ParseCities(jsonStr);
     if (cities.empty())
     {
@@ -71,10 +107,11 @@ void getter_actor_state::send_items_to_results(const std::string &jsonStr)
 
     for (const auto &city : cities)
     {
-        self->mail(send_city_v, city).send(results_accumulator);
+        self->mail(send_city_v, city, "python").send(results_accumulator);
     }
 
     self->mail(done_processing_v).send(results_accumulator);
+    self->quit();
 }
 
 getter_actor::behavior_type getter_actor_state::make_behavior()

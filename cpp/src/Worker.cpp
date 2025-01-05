@@ -1,3 +1,7 @@
+/*
+* Worker.cpp
+* Implementation of the worker actor that processes the data and sends the results to the results accumulator actor
+*/
 #include "Worker.hpp"
 #include "caf/actor_ostream.hpp"
 #include "AtomConfig.hpp"
@@ -13,11 +17,12 @@ void worker_actor_state::process_cities(std::vector<City>& cities)
 
         if (comfortIndex > 323) // Check if average temp index is greater than 18 degrees
         {
-            self->mail(send_city_v, city).send(results_accumulator);
+            self->mail(send_city_v, city, "cpp").send(results_accumulator);
         }
     }
 
     self->mail(done_processing_v).send(results_accumulator);
+    self->quit();
 }
 
 int worker_actor_state::calculate_comfort_index(const City& city)
@@ -25,7 +30,7 @@ int worker_actor_state::calculate_comfort_index(const City& city)
     double averageTemp = city.averageTemp;
 
     // Mock calculation for mocking long running operation
-    for (int i = 0; i < 1000000; i++)
+    for (int i = 0; i < 10000000; i++)
     {
         averageTemp += 0.1;
         averageTemp -= 0.1;
@@ -38,15 +43,6 @@ worker_actor::behavior_type worker_actor_state::make_behavior()
 {
     return 
     {
-        [this](City city)
-        {
-            std::vector cities = {city};
-            process_cities(cities);
-        },
-        [this](caf::unit_t)
-        {
-            self->println("Worker actor triggered with unit_t");
-        },
         [this](send_cities, std::vector<City> cities)
         {
             process_cities(cities);

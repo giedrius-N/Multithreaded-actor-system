@@ -1,3 +1,7 @@
+/*
+* Sender.cpp
+* Implementation of the sender actor that sends the data to the Python server
+*/
 #include "Sender.hpp"
 #include "caf/actor_ostream.hpp"
 #include "SocketUtils.hpp"
@@ -23,6 +27,34 @@ void sender_actor_state::start_socket_server(const std::string& message)
     }
 
     self->println("Socket server listening on port 3490...");
+
+    // Set up timeout
+    fd_set readfds;
+    struct timeval timeout;
+    timeout.tv_sec = 10;
+    timeout.tv_usec = 0;
+
+    FD_ZERO(&readfds);
+    FD_SET(serverSocket, &readfds);
+
+    int activity = select(0, &readfds, nullptr, nullptr, &timeout);
+
+    if (activity == 0) 
+    {
+        self->println("No client connection within timeout. Shutting down.");
+        SocketUtils::CleanupSocket(serverSocket);
+        SocketUtils::CleanupWinsock();
+        self->quit();
+        return;
+    } 
+    else if (activity < 0) 
+    {
+        self->println("Error occurred during select().");
+        SocketUtils::CleanupSocket(serverSocket);
+        SocketUtils::CleanupWinsock();
+        self->quit();
+        return;
+    }
 
     std::string clientIp;
     SOCKET clientSocket = SocketUtils::AcceptClient(serverSocket, clientIp);
@@ -60,7 +92,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
         } 
         else 
         {
-            self->println("Failed to send greeting.");
+            self->println("Failed to send message.");
         }
 
         SocketUtils::CleanupSocket(clientSocket);
@@ -74,6 +106,7 @@ void sender_actor_state::start_socket_server(const std::string& message)
 
 
 
+
 sender_actor::behavior_type sender_actor_state::make_behavior() 
 {
     return 
@@ -83,11 +116,6 @@ sender_actor::behavior_type sender_actor_state::make_behavior()
             self->println("Received cities, starting socket server...");
 
             start_socket_server(cities);
-            
-        },
-        [this](caf::unit_t) 
-        {
-            self->println("Sender actor triggered with unit_t");
         }
     };
 }

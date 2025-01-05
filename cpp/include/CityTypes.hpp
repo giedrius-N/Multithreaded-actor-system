@@ -1,3 +1,7 @@
+/*
+* CityTypes.hpp
+* Definition of the City struct
+*/
 #ifndef CITY_TYPES_HPP
 #define CITY_TYPES_HPP
 

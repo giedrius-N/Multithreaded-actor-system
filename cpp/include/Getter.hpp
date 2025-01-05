@@ -1,3 +1,7 @@
+/*
+* Getter.hpp
+* Declaration of the getter actor that receives data from Python
+*/
 #ifndef GETTER_HPP
 #define GETTER_HPP
 
