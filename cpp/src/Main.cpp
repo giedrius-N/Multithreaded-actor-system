@@ -1,6 +1,6 @@
 // Processor: 11th Gen Intel(R) Core(TM) i5-11300H @ 3.10GHz (8 CPUs), ~3.1GHz
-// - With one worker calculations and filtering (C++ side) completed in 11.5282 seconds
-// - With four workers the entire program completed in 12.6017 seconds
+// - With one worker the program completed in 11.5282 seconds
+// - With four workers the program completed in 4.40966 seconds
 
 #include "caf/all.hpp"
 #include "MainActor.hpp"

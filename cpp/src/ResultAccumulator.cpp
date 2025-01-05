@@ -30,7 +30,6 @@ results_accumulator_actor::behavior_type results_accumulator_actor_state::make_b
             if (sources.first && sources.second) 
             {
                 cities.push_back(city);
-                self->println("City: {} added to accumulator from both sources", city.name);
             }
         },
         [this](done_processing)
