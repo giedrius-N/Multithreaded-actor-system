@@ -1,4 +1,4 @@
-# Multithreaded-actor-system
+# Multithreaded actor system
 A cross-language project implementing a multithreaded actor-based system for distributed data processing. The system features efficient communication between C++ actors (using an Actor Framework) and Python processes (using multiprocessing).
 
 ## Building the C++
@@ -58,3 +58,9 @@ For an item to appear in `results.txt`, it must pass **both** filters.
 - **Dataset 4**:  
   Some items pass the **C++ Worker Actors Filter**, and some pass the **Python Worker Process Filter**.  
   **Result**: Only the items that pass **both filters** are included in `results.txt`.
+
+
+## Dependencies
+- C++ Actor Framework: https://github.com/actor-framework/actor-framework
+  - Version: Commit `500410c872cdb0ac9479f1c3e7684c4de5adbce4`
+  - Date: 2024-01-02

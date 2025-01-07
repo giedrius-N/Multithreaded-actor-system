@@ -40,6 +40,7 @@ void getter_actor_state::start_socket_server()
     if (activity == 0)
     {
         self->println("No client connection within timeout. Shutting down.");
+        self->mail(done_processing_v).send(results_accumulator);
         SocketUtils::CleanupSocket(serverSocket);
         SocketUtils::CleanupWinsock();
         self->quit();
